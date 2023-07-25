@@ -1,6 +1,9 @@
+import 'package:bloc/bloc.dart';
+import 'package:coders_oasis/shared/bloc_observer.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
 }
 
@@ -12,6 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
