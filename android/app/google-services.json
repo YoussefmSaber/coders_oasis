@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "159275888801",
+    "project_id": "coders-oasis",
+    "storage_bucket": "coders-oasis.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:159275888801:android:134429b284be02e17480e0",
+        "android_client_info": {
+          "package_name": "com.example.coders_oasis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "159275888801-3si95dte48l3oanbkf79og5m43llatu3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2eD3TSkvtI12JcIWC_Dk75Dp7VDkRBEA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "159275888801-3si95dte48l3oanbkf79og5m43llatu3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -20,9 +20,14 @@ class OnBoardingCubit extends Cubit<OnBoardingStates> {
     BoardingModel(
         image: 'assets/images/onboarding3.png',
         title: 'Improve your skills',
-        body: 'Enhance skills through daily practice,\nunlock potential, achieve greatness')
+        body:
+            'Enhance skills through daily practice,\nunlock potential, achieve greatness')
   ];
   int currentIndex = 0;
 
   static OnBoardingCubit get(context) => BlocProvider.of(context);
+
+  void changeState() {
+    emit(OnBoardingChangeState());
+  }
 }

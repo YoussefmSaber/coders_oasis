@@ -6,7 +6,19 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text("LoginScreen")),
+      body: Column(
+        children: [
+          Expanded(
+              child: Image(image: AssetImage("assets/images/login-image.png"))),
+          Row(
+            children: [
+              Image(
+                image: AssetImage("assets/images/google-icon.png"),
+              )
+            ],
+          )
+        ],
+      ),
     );
   }
 }

@@ -13,6 +13,7 @@ import '../login/login_screen.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   final PageController boardController = PageController();
+  bool isNext = true;
 
   OnBoardingScreen({super.key});
 
@@ -77,7 +78,7 @@ class OnBoardingScreen extends StatelessWidget {
               child: defaultButton(
                 textColor: "ffffff",
                 buttonWidth: double.infinity,
-                text: "Next",
+                text: isNext ? "Next" : "Let’s Start",
                 onTap: () {
                   if (cubit.currentIndex < 2) {
                     boardController.nextPage(
