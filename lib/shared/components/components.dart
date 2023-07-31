@@ -78,6 +78,54 @@ Widget defaultButton(
       ),
     );
 
+Widget iconButton({
+  required Image buttonImage,
+  required Function onTap,
+  double radius = 10,
+  String color = "65AAEA",
+}) =>
+    FloatingActionButton(
+        onPressed: () {
+          onTap();
+        },
+        backgroundColor: HexColor(color),
+        elevation: 0,
+        highlightElevation: 0,
+        splashColor: HexColor("53535379"),
+        mini: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(radius),
+        ),
+        child: buttonImage);
+
+Widget defaultTextField(
+        {required String labelText,
+        required TextInputType inputType,
+        required bool isPassword}) => TextField(
+      obscureText: isPassword,
+      cursorColor: defaultColor,
+      decoration: InputDecoration(
+        focusColor: defaultColor,
+        labelText: labelText,
+        labelStyle: GoogleFonts.rubik(textStyle: TextStyle(color: darkGray)),
+        border: OutlineInputBorder(
+          borderSide: BorderSide(
+            width: 1.0,
+            color: gray,
+          ),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(
+            width: 1.5,
+            color: defaultColor,
+          ),
+        ),
+      ),
+      keyboardType: inputType,
+    );
+
 void navigateTo(context, widget) => Navigator.push(
     context,
     MaterialPageRoute(
