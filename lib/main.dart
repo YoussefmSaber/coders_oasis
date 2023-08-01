@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:coders_oasis/screens/authentication-screens/check-code/verify-code-screen.dart';
 import 'package:coders_oasis/screens/authentication-screens/forgetPassword/forget_password_screen.dart';
 import 'package:coders_oasis/screens/authentication-screens/login/login_screen.dart';
 import 'package:coders_oasis/screens/onboarding/onboarding.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
             builder: (context, state) => MaterialApp(
                   title: 'Flutter Demo',
                   home: Scaffold(
-                      body: SafeArea(child: ForgetPasswordScreen())),
+                      body: SafeArea(child: OnBoardingScreen())),
                   debugShowCheckedModeBanner: false,
                   theme: ThemeData(
                     useMaterial3: true,

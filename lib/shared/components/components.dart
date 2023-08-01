@@ -1,5 +1,6 @@
 import 'package:coders_oasis/shared/components/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import '../../models/boarding_model.dart';
@@ -15,7 +16,7 @@ Widget onBoardingItem(
             height: 16,
           ),
           SizedBox(
-            height: 70,
+            height: 60,
             child: Text(
               onBoardingItem.title,
               textAlign: TextAlign.center,
@@ -83,8 +84,10 @@ Widget iconButton({
   required Function onTap,
   double radius = 10,
   String color = "65AAEA",
+  required String heroTag
 }) =>
     FloatingActionButton(
+      heroTag: heroTag,
         onPressed: () {
           onTap();
         },
@@ -101,28 +104,27 @@ Widget iconButton({
 Widget backButton({
   required Function onTap,
 }) =>
-      FloatingActionButton(
-        onPressed: () {
-          onTap();
-        },
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        highlightElevation: 0,
-        splashColor: defaultColorTransparent,
-        mini: true,
-        shape: RoundedRectangleBorder(
-          side: BorderSide(width: 1,color: darkGray),
-          borderRadius: BorderRadius.circular(100),
-        ),
-        child: Icon(Icons.arrow_back_ios_new_rounded),
-
-      );
-
+    FloatingActionButton(
+      onPressed: () {
+        onTap();
+      },
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      highlightElevation: 0,
+      splashColor: defaultColorTransparent,
+      mini: true,
+      shape: RoundedRectangleBorder(
+        side: BorderSide(width: 1, color: darkGray),
+        borderRadius: BorderRadius.circular(100),
+      ),
+      child: Icon(Icons.arrow_back_ios_new_rounded),
+    );
 
 Widget defaultTextField(
         {required String labelText,
         required TextInputType inputType,
-        required bool isPassword}) => TextField(
+        required bool isPassword}) =>
+    TextField(
       obscureText: isPassword,
       cursorColor: defaultColor,
       decoration: InputDecoration(
@@ -146,6 +148,154 @@ Widget defaultTextField(
       ),
       keyboardType: inputType,
     );
+
+Widget otpPin(context) => Padding(
+  padding: const EdgeInsets.all(8.0),
+  child:   Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: SizedBox(
+              height: 68,
+              width: 64,
+              child: TextField(
+                onChanged: (s){
+                  if(s.length == 1) {
+                    FocusScope.of(context).nextFocus();
+                  }
+                },
+                cursorColor: defaultColor,
+                keyboardType: TextInputType.number,
+                textAlign: TextAlign.center,
+                inputFormatters: [LengthLimitingTextInputFormatter(1), FilteringTextInputFormatter.digitsOnly],
+                decoration: InputDecoration(
+                  focusColor: defaultColor,
+                  labelStyle: GoogleFonts.rubik(textStyle: TextStyle(color: darkGray)),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      width: 1.0,
+                      color: gray,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(
+                      width: 1.5,
+                      color: defaultColor,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: SizedBox(
+              height: 68,
+              width: 64,
+              child: TextField(
+                onChanged: (s){
+                  if(s.length == 1) {
+                    FocusScope.of(context).nextFocus();
+                  }
+                },
+                cursorColor: defaultColor,
+                keyboardType: TextInputType.number,
+                textAlign: TextAlign.center,
+                inputFormatters: [LengthLimitingTextInputFormatter(1), FilteringTextInputFormatter.digitsOnly],
+                decoration: InputDecoration(
+                  focusColor: defaultColor,
+                  labelStyle: GoogleFonts.rubik(textStyle: TextStyle(color: darkGray)),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      width: 1.0,
+                      color: gray,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(
+                      width: 1.5,
+                      color: defaultColor,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: SizedBox(
+              height: 68,
+              width: 64,
+              child: TextField(
+                onChanged: (s){
+                  if(s.length == 1) {
+                    FocusScope.of(context).nextFocus();
+                  }
+                },
+                cursorColor: defaultColor,
+                keyboardType: TextInputType.number,
+                textAlign: TextAlign.center,
+                inputFormatters: [LengthLimitingTextInputFormatter(1), FilteringTextInputFormatter.digitsOnly],
+                decoration: InputDecoration(
+                  focusColor: defaultColor,
+                  labelStyle: GoogleFonts.rubik(textStyle: TextStyle(color: darkGray)),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      width: 1.0,
+                      color: gray,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(
+                      width: 1.5,
+                      color: defaultColor,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: SizedBox(
+              height: 68,
+              width: 64,
+              child: TextField(
+                cursorColor: defaultColor,
+                keyboardType: TextInputType.number,
+                textAlign: TextAlign.center,
+                inputFormatters: [LengthLimitingTextInputFormatter(1), FilteringTextInputFormatter.digitsOnly],
+                decoration: InputDecoration(
+                  focusColor: defaultColor,
+                  labelStyle: GoogleFonts.rubik(textStyle: TextStyle(color: darkGray)),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      width: 1.0,
+                      color: gray,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(
+                      width: 1.5,
+                      color: defaultColor,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+);
 
 void navigateTo(context, widget) => Navigator.push(
     context,

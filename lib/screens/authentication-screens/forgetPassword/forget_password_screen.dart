@@ -1,3 +1,4 @@
+import 'package:coders_oasis/screens/authentication-screens/check-code/verify-code-screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -53,7 +54,9 @@ class ForgetPasswordScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(16.0),
                   child: defaultButton(
                       text: "Send Code",
-                      onTap: () {},
+                      onTap: () {
+                        navigateTo(context, VerifyCodeScreen());
+                      },
                       textColor: "ffffff",
                       buttonWidth: double.infinity),
                 ),

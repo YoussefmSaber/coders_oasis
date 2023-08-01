@@ -21,7 +21,7 @@ class LoginScreen extends StatelessWidget {
             children: [
               const SizedBox(height: 100),
               const Image(image: AssetImage("assets/images/images/login-image.png")),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               Text(
@@ -29,7 +29,7 @@ class LoginScreen extends StatelessWidget {
                 style: GoogleFonts.rubik(
                     color: darkFont,
                     textStyle:
-                        TextStyle(fontSize: 24, fontWeight: FontWeight.w500)),
+                        const TextStyle(fontSize: 24, fontWeight: FontWeight.w500)),
               ),
               const SizedBox(
                 height: 2,
@@ -39,7 +39,7 @@ class LoginScreen extends StatelessWidget {
                 style: GoogleFonts.rubik(
                     color: darkGray,
                     textStyle:
-                        TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
+                        const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
               ),
               const SizedBox(
                 height: 8,
@@ -48,18 +48,21 @@ class LoginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   iconButton(
+                    heroTag: 'google',
                       onTap: () {},
-                      buttonImage: Image(
+                      buttonImage: const Image(
                         image: AssetImage("assets/images/icons/google-icon.png"),
                       )),
                   iconButton(
+                    heroTag: 'facebook',
                       onTap: () {},
-                      buttonImage: Image(
+                      buttonImage: const Image(
                           image:
                               AssetImage("assets/images/icons/facebook-icon.png"))),
                   iconButton(
+                    heroTag: 'apple',
                       onTap: () {},
-                      buttonImage: Image(
+                      buttonImage: const Image(
                           image: AssetImage("assets/images/icons/apple-icon.png"))),
                 ],
               ),
@@ -81,6 +84,15 @@ class LoginScreen extends StatelessWidget {
                       inputType: TextInputType.emailAddress,
                       isPassword: true)),
               TextButton(
+                  style: ButtonStyle(
+                      splashFactory: InkSplash.splashFactory,
+                      overlayColor:
+                      MaterialStateProperty.resolveWith((state) {
+                        if (state.contains(MaterialState.pressed)) {
+                          return secondaryColorTransparent;
+                        }
+                        return null;
+                      })),
                   onPressed: () {
                     navigateTo(context, ForgetPasswordScreen());
                   },
@@ -102,8 +114,17 @@ class LoginScreen extends StatelessWidget {
                     buttonWidth: double.infinity),
               ),
               TextButton(
+                  style: ButtonStyle(
+                      splashFactory: InkSplash.splashFactory,
+                      overlayColor:
+                      MaterialStateProperty.resolveWith((state) {
+                        if (state.contains(MaterialState.pressed)) {
+                          return secondaryColorTransparent;
+                        }
+                        return null;
+                      })),
                   onPressed: () {
-                    navigateTo(context, SignupScreen());
+                    navigateTo(context, const SignupScreen());
                   },
                   child: Text(
                     "Sign up",

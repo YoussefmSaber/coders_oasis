@@ -76,6 +76,14 @@ class SignupScreen extends StatelessWidget {
                       buttonWidth: double.infinity),
                 ),
                 TextButton(
+                    style: ButtonStyle(
+                        splashFactory: InkSplash.splashFactory,
+                        overlayColor:
+                        MaterialStateProperty.resolveWith((state) {
+                          if (state.contains(MaterialState.pressed)) {
+                            return secondaryColorTransparent;
+                          }
+                        })),
                     onPressed: () {
                       navigateAndFinish(context, LoginScreen());
                     },
