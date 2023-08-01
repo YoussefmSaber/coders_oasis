@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:coders_oasis/screens/login/login_screen.dart';
+import 'package:coders_oasis/screens/credentials-screens/login/login_screen.dart';
+import 'package:coders_oasis/screens/credentials-screens/signup/signup_screen.dart';
 import 'package:coders_oasis/screens/onboarding/onboarding.dart';
-import 'package:coders_oasis/screens/signup/signup_screen.dart';
 import 'package:coders_oasis/shared/bloc_observer.dart';
 import 'package:coders_oasis/shared/cubit/onboarding_cubit/onboarding_cubit.dart';
 import 'package:coders_oasis/shared/cubit/onboarding_cubit/onboarding_states.dart';

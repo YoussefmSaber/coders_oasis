@@ -17,8 +17,8 @@ class LoginScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 100),
-              Image(image: AssetImage("assets/images/login-image.png")),
+              const SizedBox(height: 100),
+              const Image(image: AssetImage("assets/images/login-image.png")),
               SizedBox(
                 height: 16,
               ),
@@ -29,7 +29,7 @@ class LoginScreen extends StatelessWidget {
                     textStyle:
                         TextStyle(fontSize: 24, fontWeight: FontWeight.w500)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 2,
               ),
               Text(
@@ -39,7 +39,7 @@ class LoginScreen extends StatelessWidget {
                     textStyle:
                         TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
               Row(
@@ -61,7 +61,7 @@ class LoginScreen extends StatelessWidget {
                           image: AssetImage("assets/images/apple-icon.png"))),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8,
               ),
               Padding(

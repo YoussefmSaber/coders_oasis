@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../shared/components/components.dart';
-import '../../shared/components/constants.dart';
+import '../../../shared/components/components.dart';
+import '../../../shared/components/constants.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -18,7 +18,7 @@ class SignupScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 150,),
+                const SizedBox(height: 150,),
                 const Image(
                     image: AssetImage("assets/images/signup-image.png")),
                 const SizedBox(
@@ -29,7 +29,7 @@ class SignupScreen extends StatelessWidget {
                   style: GoogleFonts.rubik(
                       color: darkFont,
                       textStyle:
-                          TextStyle(fontSize: 24, fontWeight: FontWeight.w500)),
+                          const TextStyle(fontSize: 24, fontWeight: FontWeight.w500)),
                 ),
                 const SizedBox(
                   height: 2,
@@ -39,7 +39,7 @@ class SignupScreen extends StatelessWidget {
                   style: GoogleFonts.rubik(
                       color: darkGray,
                       textStyle:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
+                          const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
                 ),
                 const SizedBox(
                   height: 8,
@@ -84,7 +84,7 @@ class SignupScreen extends StatelessWidget {
                               fontSize: 16,
                               fontWeight: FontWeight.w500)),
                     )),
-                SizedBox(height: 40,),
+                const SizedBox(height: 40,),
               ],
             ),
             Padding(

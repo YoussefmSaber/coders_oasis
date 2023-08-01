@@ -9,7 +9,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../shared/components/components.dart';
 import '../../shared/network/local/cahce_helper.dart';
-import '../login/login_screen.dart';
+import '../credentials-screens/login/login_screen.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   final PageController boardController = PageController();
@@ -45,7 +45,7 @@ class OnBoardingScreen extends StatelessWidget {
         ),
         body: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 150,
             ),
             Expanded(
@@ -70,7 +70,7 @@ class OnBoardingScreen extends StatelessWidget {
               controller: boardController,
               count: cubit.onBoardingItems.length,
             ),
-            SizedBox(
+            const SizedBox(
               height: 160,
             ),
             Padding(
