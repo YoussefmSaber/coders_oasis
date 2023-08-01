@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../shared/components/components.dart';
 import '../../../shared/components/constants.dart';
+import '../login/login_screen.dart';
 
 class SignupScreen extends StatelessWidget {
   const SignupScreen({super.key});
@@ -20,7 +21,7 @@ class SignupScreen extends StatelessWidget {
               children: [
                 const SizedBox(height: 150,),
                 const Image(
-                    image: AssetImage("assets/images/signup-image.png")),
+                    image: AssetImage("assets/images/images/signup-image.png")),
                 const SizedBox(
                   height: 16,
                 ),
@@ -75,7 +76,9 @@ class SignupScreen extends StatelessWidget {
                       buttonWidth: double.infinity),
                 ),
                 TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      navigateAndFinish(context, LoginScreen());
+                    },
                     child: Text(
                       "Login",
                       style: GoogleFonts.rubik(
@@ -89,7 +92,9 @@ class SignupScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Positioned(top: 0, left: 0,child: backButton(onTap: () {})),
+              child: backButton(onTap: () {
+                navigateAndFinish(context, LoginScreen());
+              }),
             ),
           ]),
         ),

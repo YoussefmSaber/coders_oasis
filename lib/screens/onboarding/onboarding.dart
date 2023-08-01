@@ -9,7 +9,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../shared/components/components.dart';
 import '../../shared/network/local/cahce_helper.dart';
-import '../credentials-screens/login/login_screen.dart';
+import '../authentication-screens/login/login_screen.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   final PageController boardController = PageController();

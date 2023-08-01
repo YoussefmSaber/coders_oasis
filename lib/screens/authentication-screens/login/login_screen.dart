@@ -1,8 +1,10 @@
+import 'package:coders_oasis/screens/authentication-screens/forgetPassword/forget_password_screen.dart';
 import 'package:coders_oasis/shared/components/components.dart';
 import 'package:coders_oasis/shared/components/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hexcolor/hexcolor.dart';
+
+import '../signup/signup_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -18,7 +20,7 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 100),
-              const Image(image: AssetImage("assets/images/login-image.png")),
+              const Image(image: AssetImage("assets/images/images/login-image.png")),
               SizedBox(
                 height: 16,
               ),
@@ -48,17 +50,17 @@ class LoginScreen extends StatelessWidget {
                   iconButton(
                       onTap: () {},
                       buttonImage: Image(
-                        image: AssetImage("assets/images/google-icon.png"),
+                        image: AssetImage("assets/images/icons/google-icon.png"),
                       )),
                   iconButton(
                       onTap: () {},
                       buttonImage: Image(
                           image:
-                              AssetImage("assets/images/facebook-icon.png"))),
+                              AssetImage("assets/images/icons/facebook-icon.png"))),
                   iconButton(
                       onTap: () {},
                       buttonImage: Image(
-                          image: AssetImage("assets/images/apple-icon.png"))),
+                          image: AssetImage("assets/images/icons/apple-icon.png"))),
                 ],
               ),
               const SizedBox(
@@ -79,7 +81,9 @@ class LoginScreen extends StatelessWidget {
                       inputType: TextInputType.emailAddress,
                       isPassword: true)),
               TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    navigateTo(context, ForgetPasswordScreen());
+                  },
                   child: Text(
                     "Forgot Password?",
                     style: GoogleFonts.rubik(
@@ -98,7 +102,9 @@ class LoginScreen extends StatelessWidget {
                     buttonWidth: double.infinity),
               ),
               TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    navigateTo(context, SignupScreen());
+                  },
                   child: Text(
                     "Sign up",
                     style: GoogleFonts.rubik(

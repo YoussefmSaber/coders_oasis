@@ -68,7 +68,7 @@ Widget defaultButton(
           backgroundColor: MaterialStateProperty.all(HexColor(color)),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 14.0),
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: Text(
             text,
             style: GoogleFonts.rubik(
