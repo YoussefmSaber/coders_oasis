@@ -98,6 +98,27 @@ Widget iconButton({
         ),
         child: buttonImage);
 
+Widget backButton({
+  required Function onTap,
+}) =>
+      FloatingActionButton(
+        onPressed: () {
+          onTap();
+        },
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        highlightElevation: 0,
+        splashColor: defaultColorTransparent,
+        mini: true,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(width: 1,color: darkGray),
+          borderRadius: BorderRadius.circular(100),
+        ),
+        child: Icon(Icons.arrow_back_ios_new_rounded),
+
+      );
+
+
 Widget defaultTextField(
         {required String labelText,
         required TextInputType inputType,

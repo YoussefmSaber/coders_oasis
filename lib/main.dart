@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:coders_oasis/screens/login/login_screen.dart';
 import 'package:coders_oasis/screens/onboarding/onboarding.dart';
+import 'package:coders_oasis/screens/signup/signup_screen.dart';
 import 'package:coders_oasis/shared/bloc_observer.dart';
 import 'package:coders_oasis/shared/cubit/onboarding_cubit/onboarding_cubit.dart';
 import 'package:coders_oasis/shared/cubit/onboarding_cubit/onboarding_states.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
             builder: (context, state) => MaterialApp(
                   title: 'Flutter Demo',
                   home: Scaffold(
-                      body: SafeArea(child: openScreen())),
+                      body: SafeArea(child: SignupScreen())),
                   debugShowCheckedModeBanner: false,
                   theme: ThemeData(
                     useMaterial3: true,
