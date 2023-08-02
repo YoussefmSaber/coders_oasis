@@ -79,15 +79,14 @@ Widget defaultButton(
       ),
     );
 
-Widget iconButton({
-  required Image buttonImage,
-  required Function onTap,
-  double radius = 10,
-  String color = "65AAEA",
-  required String heroTag
-}) =>
+Widget iconButton(
+        {required Image buttonImage,
+        required Function onTap,
+        double radius = 10,
+        String color = "65AAEA",
+        required String heroTag}) =>
     FloatingActionButton(
-      heroTag: heroTag,
+        heroTag: heroTag,
         onPressed: () {
           onTap();
         },
@@ -150,9 +149,9 @@ Widget defaultTextField(
     );
 
 Widget otpPin(context) => Padding(
-  padding: const EdgeInsets.all(8.0),
-  child:   Row(
-    mainAxisAlignment: MainAxisAlignment.center,
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
             padding: const EdgeInsets.all(12.0),
@@ -160,18 +159,22 @@ Widget otpPin(context) => Padding(
               height: 68,
               width: 64,
               child: TextField(
-                onChanged: (s){
-                  if(s.length == 1) {
+                onChanged: (s) {
+                  if (s.length == 1) {
                     FocusScope.of(context).nextFocus();
                   }
                 },
                 cursorColor: defaultColor,
                 keyboardType: TextInputType.number,
                 textAlign: TextAlign.center,
-                inputFormatters: [LengthLimitingTextInputFormatter(1), FilteringTextInputFormatter.digitsOnly],
+                inputFormatters: [
+                  LengthLimitingTextInputFormatter(1),
+                  FilteringTextInputFormatter.digitsOnly
+                ],
                 decoration: InputDecoration(
                   focusColor: defaultColor,
-                  labelStyle: GoogleFonts.rubik(textStyle: TextStyle(color: darkGray)),
+                  labelStyle:
+                      GoogleFonts.rubik(textStyle: TextStyle(color: darkGray)),
                   border: OutlineInputBorder(
                     borderSide: BorderSide(
                       width: 1.0,
@@ -196,18 +199,22 @@ Widget otpPin(context) => Padding(
               height: 68,
               width: 64,
               child: TextField(
-                onChanged: (s){
-                  if(s.length == 1) {
+                onChanged: (s) {
+                  if (s.length == 1) {
                     FocusScope.of(context).nextFocus();
                   }
                 },
                 cursorColor: defaultColor,
                 keyboardType: TextInputType.number,
                 textAlign: TextAlign.center,
-                inputFormatters: [LengthLimitingTextInputFormatter(1), FilteringTextInputFormatter.digitsOnly],
+                inputFormatters: [
+                  LengthLimitingTextInputFormatter(1),
+                  FilteringTextInputFormatter.digitsOnly
+                ],
                 decoration: InputDecoration(
                   focusColor: defaultColor,
-                  labelStyle: GoogleFonts.rubik(textStyle: TextStyle(color: darkGray)),
+                  labelStyle:
+                      GoogleFonts.rubik(textStyle: TextStyle(color: darkGray)),
                   border: OutlineInputBorder(
                     borderSide: BorderSide(
                       width: 1.0,
@@ -232,18 +239,22 @@ Widget otpPin(context) => Padding(
               height: 68,
               width: 64,
               child: TextField(
-                onChanged: (s){
-                  if(s.length == 1) {
+                onChanged: (s) {
+                  if (s.length == 1) {
                     FocusScope.of(context).nextFocus();
                   }
                 },
                 cursorColor: defaultColor,
                 keyboardType: TextInputType.number,
                 textAlign: TextAlign.center,
-                inputFormatters: [LengthLimitingTextInputFormatter(1), FilteringTextInputFormatter.digitsOnly],
+                inputFormatters: [
+                  LengthLimitingTextInputFormatter(1),
+                  FilteringTextInputFormatter.digitsOnly
+                ],
                 decoration: InputDecoration(
                   focusColor: defaultColor,
-                  labelStyle: GoogleFonts.rubik(textStyle: TextStyle(color: darkGray)),
+                  labelStyle:
+                      GoogleFonts.rubik(textStyle: TextStyle(color: darkGray)),
                   border: OutlineInputBorder(
                     borderSide: BorderSide(
                       width: 1.0,
@@ -271,10 +282,14 @@ Widget otpPin(context) => Padding(
                 cursorColor: defaultColor,
                 keyboardType: TextInputType.number,
                 textAlign: TextAlign.center,
-                inputFormatters: [LengthLimitingTextInputFormatter(1), FilteringTextInputFormatter.digitsOnly],
+                inputFormatters: [
+                  LengthLimitingTextInputFormatter(1),
+                  FilteringTextInputFormatter.digitsOnly
+                ],
                 decoration: InputDecoration(
                   focusColor: defaultColor,
-                  labelStyle: GoogleFonts.rubik(textStyle: TextStyle(color: darkGray)),
+                  labelStyle:
+                      GoogleFonts.rubik(textStyle: TextStyle(color: darkGray)),
                   border: OutlineInputBorder(
                     borderSide: BorderSide(
                       width: 1.0,
@@ -295,7 +310,7 @@ Widget otpPin(context) => Padding(
           ),
         ],
       ),
-);
+    );
 
 void navigateTo(context, widget) => Navigator.push(
     context,
