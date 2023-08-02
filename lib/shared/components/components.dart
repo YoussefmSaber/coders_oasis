@@ -312,6 +312,65 @@ Widget otpPin(context) => Padding(
       ),
     );
 
+Widget settingsItem({
+  required String label,
+  required IconData itemIcon,
+  required String subLabel
+}) => Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          side: BorderSide(width: 1.5, color: gray),
+          borderRadius: BorderRadius.circular(16),
+        ),
+        color: Colors.transparent,
+        elevation: 0,
+        surfaceTintColor: Colors.black,
+        child: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: CircleAvatar(
+                backgroundColor: secondaryColor,
+                child: Icon(
+                  itemIcon,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  label,
+                  style: GoogleFonts.rubik(
+                      letterSpacing: -0.50,
+                      fontSize: 20,
+                      color: darkFont,
+                      fontWeight: FontWeight.w500),
+                ),
+                Text(
+                  subLabel,
+                  style: GoogleFonts.rubik(
+                      letterSpacing: -0.50,
+                      fontSize: 16,
+                      color: darkGray,
+                      fontWeight: FontWeight.w400),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                ),
+              ],
+            ),
+            Spacer(),
+            Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Icon(Icons.arrow_forward_ios_sharp, color: gray),
+            )
+          ],
+        ),
+      ),
+    );
+
 void navigateTo(context, widget) => Navigator.push(
     context,
     MaterialPageRoute(

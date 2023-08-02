@@ -99,7 +99,7 @@ class SignupScreen extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(8.0),
               child: backButton(onTap: () {
                 navigateAndFinish(context, LoginScreen());
               }),

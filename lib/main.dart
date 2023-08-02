@@ -5,6 +5,7 @@ import 'package:coders_oasis/shared/bloc_observer.dart';
 import 'package:coders_oasis/shared/cubit/applayout-cubit/applayout_cubit.dart';
 import 'package:coders_oasis/shared/cubit/onboarding_cubit/onboarding_cubit.dart';
 import 'package:coders_oasis/shared/cubit/onboarding_cubit/onboarding_states.dart';
+import 'package:coders_oasis/shared/cubit/settings-cubit/settings_cubit.dart';
 import 'package:coders_oasis/shared/network/local/cahce_helper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,8 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => OnBoardingCubit()),
-          BlocProvider(create: (context) => AppLayoutCubit())
+          BlocProvider(create: (context) => AppLayoutCubit()),
+          BlocProvider(create: (context) => SettingsCubit())
         ],
         child: BlocConsumer<OnBoardingCubit, OnBoardingStates>(
             listener: (context, state) {},
