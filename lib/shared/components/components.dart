@@ -109,6 +109,22 @@ Widget backButton({
       child: const Icon(Icons.arrow_back_ios_new_rounded),
     );
 
+Widget notificationButton({required Function onTap}) => FloatingActionButton(
+      onPressed: () {
+        onTap();
+      },
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      highlightElevation: 0,
+      splashColor: defaultColorTransparent,
+      mini: true,
+      shape: RoundedRectangleBorder(
+        side: BorderSide(width: 1, color: darkGray),
+        borderRadius: BorderRadius.circular(100),
+      ),
+      child: ImageIcon(AssetImage("assets/images/icons/notification-icon.png"), color: darkFont,),
+    );
+
 Widget defaultTextField(
         {required String labelText,
         required TextInputType inputType,
@@ -357,33 +373,34 @@ Widget settingsItem(
       ),
     );
 
-Widget profileItem({
-  required String label
-}) => Card(
-  surfaceTintColor: Colors.white,
-  elevation: 0,
-  shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(12),
-      side: BorderSide(width: 1.5, color: gray)),
-  color: Colors.white,
-  child: SizedBox(
-    width: double.infinity,
-    child: Padding(
-      padding: const EdgeInsets.all(22.0),
-      child: Row(
-        children: [
-          const Spacer(),
-          Text(
-            label,
-            style: GoogleFonts.rubik(
-                fontSize: 20, fontWeight: FontWeight.w500, color: darkFont, letterSpacing: -0.5),
+Widget profileItem({required String label}) => Card(
+      surfaceTintColor: Colors.white,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+          side: BorderSide(width: 1.5, color: gray)),
+      color: Colors.white,
+      child: SizedBox(
+        width: double.infinity,
+        child: Padding(
+          padding: const EdgeInsets.all(22.0),
+          child: Row(
+            children: [
+              const Spacer(),
+              Text(
+                label,
+                style: GoogleFonts.rubik(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    color: darkFont,
+                    letterSpacing: -0.5),
+              ),
+              const Spacer()
+            ],
           ),
-          const Spacer()
-        ],
+        ),
       ),
-    ),
-  ),
-);
+    );
 
 void navigateTo(context, widget) => Navigator.push(
     context,

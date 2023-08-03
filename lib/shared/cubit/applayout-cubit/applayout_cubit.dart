@@ -28,7 +28,7 @@ class AppLayoutCubit extends Cubit<AppLayoutStates> {
 
   static AppLayoutCubit get(context) => BlocProvider.of(context);
 
-  int currentIndex = 1;
+  int currentIndex = 0;
 
   void changeIndex(index) {
     currentIndex = index;
