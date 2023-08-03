@@ -3,7 +3,6 @@ import 'package:coders_oasis/shared/cubit/onboarding_cubit/onboarding_cubit.dart
 import 'package:coders_oasis/shared/cubit/onboarding_cubit/onboarding_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -29,18 +28,15 @@ class OnBoardingScreen extends StatelessWidget {
           elevation: 0,
           actions: [
             TextButton(
-                style: ButtonStyle(
-                    overlayColor:
-                        MaterialStateProperty.all(defaultColorTransparent)),
-                onPressed: () {
-                  skipOnBoarding(context);
-                },
-                child: Text(
-                  "Skip",
-                  style: GoogleFonts.rubik(
-                      textStyle:
-                          TextStyle(color: HexColor("78746D"), fontSize: 16)),
-                ))
+              style: ButtonStyle(
+                  overlayColor:
+                      MaterialStateProperty.all(defaultColorTransparent)),
+              onPressed: () {
+                skipOnBoarding(context);
+              },
+              child: Text("Skip",
+                  style: TextStyle(color: HexColor("78746D"), fontSize: 16)),
+            )
           ],
         ),
         body: Column(
@@ -100,7 +96,7 @@ class OnBoardingScreen extends StatelessWidget {
   void skipOnBoarding(context) {
     CacheHelper.saveData(key: 'onBoarding', value: true).then((value) {
       if (value) {
-        navigateAndFinish(context, LoginScreen());
+        navigateAndFinish(context, const LoginScreen());
       }
     });
   }

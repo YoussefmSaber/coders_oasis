@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../shared/components/components.dart';
 import '../../../shared/components/constants.dart';
@@ -19,7 +18,9 @@ class SignupScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(height: 150,),
+                const SizedBox(
+                  height: 150,
+                ),
                 const Image(
                     image: AssetImage("assets/images/images/signup-image.png")),
                 const SizedBox(
@@ -27,20 +28,20 @@ class SignupScreen extends StatelessWidget {
                 ),
                 Text(
                   "Sign up",
-                  style: GoogleFonts.rubik(
+                  style: TextStyle(
                       color: darkFont,
-                      textStyle:
-                          const TextStyle(fontSize: 24, fontWeight: FontWeight.w500)),
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500),
                 ),
                 const SizedBox(
                   height: 2,
                 ),
                 Text(
                   "Create your account",
-                  style: GoogleFonts.rubik(
+                  style: TextStyle(
                       color: darkGray,
-                      textStyle:
-                          const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400),
                 ),
                 const SizedBox(
                   height: 8,
@@ -76,32 +77,31 @@ class SignupScreen extends StatelessWidget {
                       buttonWidth: double.infinity),
                 ),
                 TextButton(
-                    style: ButtonStyle(
-                        splashFactory: InkSplash.splashFactory,
-                        overlayColor:
-                        MaterialStateProperty.resolveWith((state) {
-                          if (state.contains(MaterialState.pressed)) {
-                            return secondaryColorTransparent;
-                          }
-                        })),
-                    onPressed: () {
-                      navigateAndFinish(context, LoginScreen());
-                    },
-                    child: Text(
-                      "Login",
-                      style: GoogleFonts.rubik(
-                          textStyle: TextStyle(
-                              color: darkGray,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500)),
-                    )),
-                const SizedBox(height: 40,),
+                  style: ButtonStyle(
+                      splashFactory: InkSplash.splashFactory,
+                      overlayColor: MaterialStateProperty.resolveWith((state) {
+                        if (state.contains(MaterialState.pressed)) {
+                          return secondaryColorTransparent;
+                        }
+                      })),
+                  onPressed: () {
+                    navigateAndFinish(context, const LoginScreen());
+                  },
+                  child: Text("Login",
+                      style: TextStyle(
+                          color: darkGray,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500)),
+                ),
+                const SizedBox(
+                  height: 40,
+                ),
               ],
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: backButton(onTap: () {
-                navigateAndFinish(context, LoginScreen());
+                navigateAndFinish(context, const LoginScreen());
               }),
             ),
           ]),

@@ -1,9 +1,6 @@
-import 'package:bloc/bloc.dart';
 import 'package:coders_oasis/screens/app-screens/courses-screen/courses_screen.dart';
 import 'package:coders_oasis/screens/app-screens/profile-screen/profile_screen.dart';
 import 'package:coders_oasis/screens/app-screens/settings-screen/settings_screen.dart';
-import 'package:coders_oasis/shared/components/components.dart';
-import 'package:coders_oasis/shared/components/constants.dart';
 import 'package:coders_oasis/shared/cubit/applayout-cubit/applayout_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,7 +28,7 @@ class AppLayoutCubit extends Cubit<AppLayoutStates> {
 
   static AppLayoutCubit get(context) => BlocProvider.of(context);
 
-  int currentIndex = 2;
+  int currentIndex = 1;
 
   void changeIndex(index) {
     currentIndex = index;

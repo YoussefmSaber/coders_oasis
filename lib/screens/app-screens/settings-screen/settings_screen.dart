@@ -4,7 +4,6 @@ import 'package:coders_oasis/shared/cubit/applayout-cubit/applayout_cubit.dart';
 import 'package:coders_oasis/shared/cubit/settings-cubit/settings_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../shared/cubit/settings-cubit/settings_states.dart';
 
@@ -33,7 +32,7 @@ class SettingsScreen extends StatelessWidget {
                               horizontal: 16, vertical: 8),
                           child: Text(
                             "Settings",
-                            style: GoogleFonts.rubik(
+                            style: TextStyle(
                                 letterSpacing: -0.50,
                                 color: darkFont,
                                 fontSize: 24,
@@ -72,13 +71,13 @@ class SettingsScreen extends StatelessWidget {
                               ),
                               Text(
                                 "Notifications",
-                                style: GoogleFonts.rubik(
+                                style: TextStyle(
                                     letterSpacing: -0.50,
                                     fontSize: 20,
                                     color: darkFont,
                                     fontWeight: FontWeight.w500),
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Padding(
                                 padding: const EdgeInsets.all(24.0),
                                 child: Switch(
@@ -103,7 +102,7 @@ class SettingsScreen extends StatelessWidget {
                               horizontal: 24, vertical: 8),
                           child: Text(
                             "Account information",
-                            style: GoogleFonts.rubik(
+                            style: TextStyle(
                                 letterSpacing: -0.50,
                                 fontSize: 24,
                                 fontWeight: FontWeight.w500,

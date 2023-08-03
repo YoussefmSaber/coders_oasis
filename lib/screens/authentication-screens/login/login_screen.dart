@@ -2,7 +2,6 @@ import 'package:coders_oasis/screens/authentication-screens/forgetPassword/forge
 import 'package:coders_oasis/shared/components/components.dart';
 import 'package:coders_oasis/shared/components/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../signup/signup_screen.dart';
 
@@ -20,27 +19,24 @@ class LoginScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 100),
-              const Image(image: AssetImage("assets/images/images/login-image.png")),
+              const Image(
+                  image: AssetImage("assets/images/images/login-image.png")),
               const SizedBox(
                 height: 16,
               ),
-              Text(
-                "Log in",
-                style: GoogleFonts.rubik(
-                    color: darkFont,
-                    textStyle:
-                        const TextStyle(fontSize: 24, fontWeight: FontWeight.w500)),
-              ),
+              Text("Log in",
+                  style: TextStyle(
+                      color: darkFont,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500)),
               const SizedBox(
                 height: 2,
               ),
-              Text(
-                "Login with social networks",
-                style: GoogleFonts.rubik(
-                    color: darkGray,
-                    textStyle:
-                        const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
-              ),
+              Text("Login with social networks",
+                  style: TextStyle(
+                      color: darkGray,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400)),
               const SizedBox(
                 height: 8,
               ),
@@ -48,22 +44,24 @@ class LoginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   iconButton(
-                    heroTag: 'google',
+                      heroTag: 'google',
                       onTap: () {},
                       buttonImage: const Image(
-                        image: AssetImage("assets/images/icons/google-icon.png"),
+                        image:
+                            AssetImage("assets/images/icons/google-icon.png"),
                       )),
                   iconButton(
-                    heroTag: 'facebook',
+                      heroTag: 'facebook',
                       onTap: () {},
                       buttonImage: const Image(
-                          image:
-                              AssetImage("assets/images/icons/facebook-icon.png"))),
+                          image: AssetImage(
+                              "assets/images/icons/facebook-icon.png"))),
                   iconButton(
-                    heroTag: 'apple',
+                      heroTag: 'apple',
                       onTap: () {},
                       buttonImage: const Image(
-                          image: AssetImage("assets/images/icons/apple-icon.png"))),
+                          image: AssetImage(
+                              "assets/images/icons/apple-icon.png"))),
                 ],
               ),
               const SizedBox(
@@ -84,26 +82,23 @@ class LoginScreen extends StatelessWidget {
                       inputType: TextInputType.emailAddress,
                       isPassword: true)),
               TextButton(
-                  style: ButtonStyle(
-                      splashFactory: InkSplash.splashFactory,
-                      overlayColor:
-                      MaterialStateProperty.resolveWith((state) {
-                        if (state.contains(MaterialState.pressed)) {
-                          return secondaryColorTransparent;
-                        }
-                        return null;
-                      })),
-                  onPressed: () {
-                    navigateTo(context, ForgetPasswordScreen());
-                  },
-                  child: Text(
-                    "Forgot Password?",
-                    style: GoogleFonts.rubik(
-                        textStyle: TextStyle(
-                            color: darkGray,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500)),
-                  )),
+                style: ButtonStyle(
+                    splashFactory: InkSplash.splashFactory,
+                    overlayColor: MaterialStateProperty.resolveWith((state) {
+                      if (state.contains(MaterialState.pressed)) {
+                        return secondaryColorTransparent;
+                      }
+                      return null;
+                    })),
+                onPressed: () {
+                  navigateTo(context, const ForgetPasswordScreen());
+                },
+                child: Text("Forgot Password?",
+                    style: TextStyle(
+                        color: darkGray,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500)),
+              ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
@@ -114,26 +109,23 @@ class LoginScreen extends StatelessWidget {
                     buttonWidth: double.infinity),
               ),
               TextButton(
-                  style: ButtonStyle(
-                      splashFactory: InkSplash.splashFactory,
-                      overlayColor:
-                      MaterialStateProperty.resolveWith((state) {
-                        if (state.contains(MaterialState.pressed)) {
-                          return secondaryColorTransparent;
-                        }
-                        return null;
-                      })),
-                  onPressed: () {
-                    navigateTo(context, const SignupScreen());
-                  },
-                  child: Text(
-                    "Sign up",
-                    style: GoogleFonts.rubik(
-                        textStyle: TextStyle(
-                            color: darkGray,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500)),
-                  )),
+                style: ButtonStyle(
+                    splashFactory: InkSplash.splashFactory,
+                    overlayColor: MaterialStateProperty.resolveWith((state) {
+                      if (state.contains(MaterialState.pressed)) {
+                        return secondaryColorTransparent;
+                      }
+                      return null;
+                    })),
+                onPressed: () {
+                  navigateTo(context, const SignupScreen());
+                },
+                child: Text("Sign up",
+                    style: TextStyle(
+                        color: darkGray,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500)),
+              ),
             ],
           ),
         ),

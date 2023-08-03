@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:coders_oasis/screens/authentication-screens/login/login_screen.dart';
 import 'package:coders_oasis/screens/onboarding/onboarding.dart';
 import 'package:coders_oasis/shared/bloc_observer.dart';
@@ -56,8 +55,7 @@ class MyApp extends StatelessWidget {
 
   Widget openScreen() {
     if (onBoarding) {
-      print(onBoarding);
-      return LoginScreen();
+      return const LoginScreen();
     } else {
       return OnBoardingScreen();
     }
