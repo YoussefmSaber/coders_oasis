@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../shared/components/components.dart';
 import '../../../shared/components/constants.dart';
@@ -28,20 +29,22 @@ class SignupScreen extends StatelessWidget {
                 ),
                 Text(
                   "Sign up",
-                  style: TextStyle(
+                  style: GoogleFonts.rubik(
+                    textStyle:TextStyle(
                       color: darkFont,
                       fontSize: 24,
-                      fontWeight: FontWeight.w500),
+                      fontWeight: FontWeight.w500)),
                 ),
                 const SizedBox(
                   height: 2,
                 ),
                 Text(
                   "Create your account",
-                  style: TextStyle(
+                  style: GoogleFonts.rubik(
+                    textStyle:TextStyle(
                       color: darkGray,
                       fontSize: 16,
-                      fontWeight: FontWeight.w400),
+                      fontWeight: FontWeight.w400)),
                 ),
                 const SizedBox(
                   height: 8,
@@ -88,10 +91,11 @@ class SignupScreen extends StatelessWidget {
                     navigateAndFinish(context, const LoginScreen());
                   },
                   child: Text("Login",
-                      style: TextStyle(
+                      style:GoogleFonts.rubik(
+                          textStyle: TextStyle(
                           color: darkGray,
                           fontSize: 16,
-                          fontWeight: FontWeight.w500)),
+                          fontWeight: FontWeight.w500))),
                 ),
                 const SizedBox(
                   height: 40,

@@ -1,5 +1,6 @@
 import 'package:coders_oasis/screens/authentication-screens/forgetPassword/forget_password_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../shared/components/components.dart';
 import '../../../shared/components/constants.dart';
@@ -25,18 +26,20 @@ class VerifyCodeScreen extends StatelessWidget {
                 height: 8,
               ),
               Text("Reset Password",
-                  style: TextStyle(
-                      color: darkFont,
-                      fontSize: 24,
-                      fontWeight: FontWeight.w500)),
+                  style: GoogleFonts.rubik(
+                      textStyle: TextStyle(
+                          color: darkFont,
+                          fontSize: 24,
+                          fontWeight: FontWeight.w500))),
               const SizedBox(
                 height: 2,
               ),
               Text("Enter you email.",
-                  style: TextStyle(
-                      color: darkGray,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400)),
+                  style: GoogleFonts.rubik(
+                      textStyle: TextStyle(
+                          color: darkGray,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400))),
               otpPin(context),
               Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -52,10 +55,11 @@ class VerifyCodeScreen extends StatelessWidget {
                 children: [
                   Text(
                     "Didn’t recive a code?",
-                    style: TextStyle(
-                        color: darkGray,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400),
+                    style: GoogleFonts.rubik(
+                        textStyle: TextStyle(
+                            color: darkGray,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400)),
                   ),
                   const SizedBox(
                     width: 2,
@@ -72,10 +76,11 @@ class VerifyCodeScreen extends StatelessWidget {
                         })),
                     child: Text(
                       "Send Code",
-                      style: TextStyle(
-                          color: secondaryColor,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600),
+                      style: GoogleFonts.rubik(
+                          textStyle: TextStyle(
+                              color: secondaryColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600)),
                       selectionColor: secondaryColorTransparent,
                     ),
                   )

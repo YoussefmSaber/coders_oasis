@@ -1,5 +1,6 @@
 import 'package:coders_oasis/screens/authentication-screens/check-code/verify-code-screen.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../shared/components/components.dart';
 import '../../../shared/components/constants.dart';
@@ -27,18 +28,20 @@ class ForgetPasswordScreen extends StatelessWidget {
                   height: 8,
                 ),
                 Text("Reset Password",
-                    style: TextStyle(
+                    style: GoogleFonts.rubik(
+                        textStyle:TextStyle(
                         color: darkFont,
                         fontSize: 24,
-                        fontWeight: FontWeight.w500)),
+                        fontWeight: FontWeight.w500))),
                 const SizedBox(
                   height: 2,
                 ),
                 Text("Enter you email.",
-                    style: TextStyle(
+                    style: GoogleFonts.rubik(
+                        textStyle:TextStyle(
                         color: darkGray,
                         fontSize: 16,
-                        fontWeight: FontWeight.w400)),
+                        fontWeight: FontWeight.w400))),
                 Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 16.0, vertical: 8),

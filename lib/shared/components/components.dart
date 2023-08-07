@@ -19,7 +19,9 @@ Widget onBoardingItem(
           child: Text(
             onBoardingItem.title,
             textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+            style: GoogleFonts.rubik(
+                textStyle:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.w500)),
           ),
         ),
         const SizedBox(
@@ -28,10 +30,11 @@ Widget onBoardingItem(
         Text(
           onBoardingItem.body,
           textAlign: TextAlign.center,
-          style: TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w400,
-              color: HexColor("78746D")),
+          style: GoogleFonts.rubik(
+              textStyle: TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                  color: HexColor("78746D"))),
         ),
         const SizedBox(
           height: 16,
@@ -64,7 +67,9 @@ Widget defaultButton(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: Text(text,
-              style: TextStyle(color: HexColor(textColor), fontSize: 18)),
+              style: GoogleFonts.rubik(
+                  textStyle:
+                      TextStyle(color: HexColor(textColor), fontSize: 18))),
         ),
       ),
     );
@@ -122,7 +127,10 @@ Widget notificationButton({required Function onTap}) => FloatingActionButton(
         side: BorderSide(width: 1, color: darkGray),
         borderRadius: BorderRadius.circular(100),
       ),
-      child: ImageIcon(AssetImage("assets/images/icons/notification-icon.png"), color: darkFont,),
+      child: ImageIcon(
+        AssetImage("assets/images/icons/notification-icon.png"),
+        color: darkFont,
+      ),
     );
 
 Widget defaultTextField(
@@ -135,7 +143,7 @@ Widget defaultTextField(
       decoration: InputDecoration(
         focusColor: defaultColor,
         labelText: labelText,
-        labelStyle: TextStyle(color: darkGray),
+        labelStyle: GoogleFonts.rubik(textStyle: TextStyle(color: darkGray)),
         border: OutlineInputBorder(
           borderSide: BorderSide(
             width: 1.0,
@@ -179,7 +187,8 @@ Widget otpPin(context) => Padding(
                 ],
                 decoration: InputDecoration(
                   focusColor: defaultColor,
-                  labelStyle: TextStyle(color: darkGray),
+                  labelStyle:
+                      GoogleFonts.rubik(textStyle: TextStyle(color: darkGray)),
                   border: OutlineInputBorder(
                     borderSide: BorderSide(
                       width: 1.0,
@@ -218,7 +227,8 @@ Widget otpPin(context) => Padding(
                 ],
                 decoration: InputDecoration(
                   focusColor: defaultColor,
-                  labelStyle: TextStyle(color: darkGray),
+                  labelStyle:
+                      GoogleFonts.rubik(textStyle: TextStyle(color: darkGray)),
                   border: OutlineInputBorder(
                     borderSide: BorderSide(
                       width: 1.0,
@@ -257,7 +267,8 @@ Widget otpPin(context) => Padding(
                 ],
                 decoration: InputDecoration(
                   focusColor: defaultColor,
-                  labelStyle: TextStyle(color: darkGray),
+                  labelStyle:
+                      GoogleFonts.rubik(textStyle: TextStyle(color: darkGray)),
                   border: OutlineInputBorder(
                     borderSide: BorderSide(
                       width: 1.0,
@@ -291,7 +302,8 @@ Widget otpPin(context) => Padding(
                 ],
                 decoration: InputDecoration(
                   focusColor: defaultColor,
-                  labelStyle: TextStyle(color: darkGray),
+                  labelStyle:
+                      GoogleFonts.rubik(textStyle: TextStyle(color: darkGray)),
                   border: OutlineInputBorder(
                     borderSide: BorderSide(
                       width: 1.0,
@@ -345,19 +357,22 @@ Widget settingsItem(
               children: [
                 Text(
                   label,
-                  style: TextStyle(
-                      letterSpacing: -0.50,
-                      fontSize: 20,
-                      color: darkFont,
-                      fontWeight: FontWeight.w500),
+                  style: GoogleFonts.rubik(
+                      textStyle: GoogleFonts.rubik(
+                          textStyle: TextStyle(
+                              letterSpacing: -0.50,
+                              fontSize: 20,
+                              color: darkFont,
+                              fontWeight: FontWeight.w500))),
                 ),
                 Text(
                   subLabel,
-                  style: TextStyle(
-                      letterSpacing: -0.50,
-                      fontSize: 16,
-                      color: darkGray,
-                      fontWeight: FontWeight.w400),
+                  style: GoogleFonts.rubik(
+                      textStyle: TextStyle(
+                          letterSpacing: -0.50,
+                          fontSize: 16,
+                          color: darkGray,
+                          fontWeight: FontWeight.w400)),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 1,
                 ),

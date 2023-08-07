@@ -2,6 +2,7 @@ import 'package:coders_oasis/screens/authentication-screens/forgetPassword/forge
 import 'package:coders_oasis/shared/components/components.dart';
 import 'package:coders_oasis/shared/components/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../signup/signup_screen.dart';
 
@@ -25,18 +26,20 @@ class LoginScreen extends StatelessWidget {
                 height: 16,
               ),
               Text("Log in",
-                  style: TextStyle(
+                  style: GoogleFonts.rubik(
+                      textStyle:TextStyle(
                       color: darkFont,
                       fontSize: 24,
-                      fontWeight: FontWeight.w500)),
+                      fontWeight: FontWeight.w500))),
               const SizedBox(
                 height: 2,
               ),
               Text("Login with social networks",
-                  style: TextStyle(
+                  style: GoogleFonts.rubik(
+                      textStyle:TextStyle(
                       color: darkGray,
                       fontSize: 16,
-                      fontWeight: FontWeight.w400)),
+                      fontWeight: FontWeight.w400))),
               const SizedBox(
                 height: 8,
               ),
@@ -94,10 +97,11 @@ class LoginScreen extends StatelessWidget {
                   navigateTo(context, const ForgetPasswordScreen());
                 },
                 child: Text("Forgot Password?",
-                    style: TextStyle(
+                    style: GoogleFonts.rubik(
+                        textStyle:TextStyle(
                         color: darkGray,
                         fontSize: 16,
-                        fontWeight: FontWeight.w500)),
+                        fontWeight: FontWeight.w500))),
               ),
               Padding(
                 padding:
@@ -121,10 +125,11 @@ class LoginScreen extends StatelessWidget {
                   navigateTo(context, const SignupScreen());
                 },
                 child: Text("Sign up",
-                    style: TextStyle(
+                    style: GoogleFonts.rubik(
+                        textStyle:TextStyle(
                         color: darkGray,
                         fontSize: 16,
-                        fontWeight: FontWeight.w500)),
+                        fontWeight: FontWeight.w500))),
               ),
             ],
           ),
