@@ -8,14 +8,22 @@ import 'package:coders_oasis/shared/cubit/settings-cubit/settings_cubit.dart';
 import 'package:coders_oasis/shared/network/local/cahce_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'layout/app-layout/app_layout.dart';
 
-void main() async {
+Future<void> main() async {
+  await Supabase.initialize(
+    url: '',
+    anonKey: 'public-anon-key',
+  );
+
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
+
   await CacheHelper.init();
   var onBoarding = CacheHelper.getData(key: 'onBoarding') ?? false;
+
   runApp(MyApp(onBoarding));
 }
 
