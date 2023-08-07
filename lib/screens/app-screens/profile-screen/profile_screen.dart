@@ -61,14 +61,14 @@ class ProfileScreen extends StatelessWidget {
                     splashFactory: InkSplash.splashFactory,
                     overlayColor: MaterialStateProperty.resolveWith((state) {
                       if (state.contains(MaterialState.pressed)) {
-                        return secondaryColorTransparent;
+                        return errorColorTransparent;
                       }
                       return null;
                     })),
                 onPressed: () {},
                 child: Text(
                   "Log out",
-                  style: GoogleFonts.rubik(color: darkGray, fontSize: 14),
+                  style: GoogleFonts.rubik(color: errorColor, fontSize: 14),
                 ))
           ],
         ),

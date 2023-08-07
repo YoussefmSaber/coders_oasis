@@ -28,28 +28,32 @@ class CoursesScreen extends StatelessWidget {
                           letterSpacing: -0.5,
                           fontSize: 18),
                     ),
-                    Text("Youssef Mohammed",
+                    Text(
+                      "Youssef Mohammed",
                       style: GoogleFonts.rubik(
                           fontWeight: FontWeight.w600,
                           color: darkFont,
                           letterSpacing: -0.5,
-                          fontSize: 24),)
+                          fontSize: 24),
+                    )
                   ],
                 ),
                 const Spacer(),
-                notificationButton(onTap: (){})
+                notificationButton(onTap: () {})
               ],
             ),
-            const SizedBox(height: 16,),
+            const SizedBox(
+              height: 16,
+            ),
             TextField(
               cursorColor: defaultColor,
               decoration: InputDecoration(
                 floatingLabelStyle: TextStyle(color: defaultColor),
                 labelText: "Search course",
-                labelStyle: TextStyle(
-                  color: gray
+                labelStyle: TextStyle(color: gray),
+                suffixIcon: Image(
+                  image: AssetImage("assets/images/icons/search-icon.png"),
                 ),
-                suffixIcon: Image(image: AssetImage("assets/images/icons/search-icon.png"),),
                 border: OutlineInputBorder(
                   borderSide: BorderSide(
                     width: 1.5,
@@ -65,6 +69,19 @@ class CoursesScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            Expanded(
+              child: ListView.builder(
+                  itemCount: 3,
+                  physics: const BouncingScrollPhysics(
+                      decelerationRate: ScrollDecelerationRate.normal),
+                  itemBuilder: (context, index) => courseItem(
+                      duration: "3 h 30 min",
+                      courseTitle: "UI",
+                      courseDescription: "Advanced mobile interface design")),
             )
           ],
         ),
