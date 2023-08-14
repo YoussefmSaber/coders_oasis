@@ -96,7 +96,7 @@ class OnBoardingScreen extends StatelessWidget {
   void skipOnBoarding(context) {
     CacheHelper.saveData(key: 'onBoarding', value: true).then((value) {
       if (value) {
-        navigateAndFinish(context, const LoginScreen());
+        navigateAndFinish(context, LoginScreen());
       }
     });
   }

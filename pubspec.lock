@@ -82,7 +82,7 @@ packages:
     source: hosted
     version: "0.0.6"
   crypto:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: crypto
       sha256: ff625774173754681d66daaf4a448684fb04b78f902da9cb3d308c19cc5e8bab
@@ -134,6 +134,22 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_appauth:
+    dependency: "direct main"
+    description:
+      name: flutter_appauth
+      sha256: "72ee99075781afe804faaf4f02c81df151f09f82fc551de42c64a1dd5f16f42d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.0.1"
+  flutter_appauth_platform_interface:
+    dependency: transitive
+    description:
+      name: flutter_appauth_platform_interface
+      sha256: "44feaa7058191b5d3cd7c9ff195262725773643121bcada172d49c2ddcff71cb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.0.0"
   flutter_bloc:
     dependency: "direct main"
     description:

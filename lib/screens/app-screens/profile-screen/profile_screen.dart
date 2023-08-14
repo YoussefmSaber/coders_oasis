@@ -1,8 +1,10 @@
 import 'package:coders_oasis/shared/components/components.dart';
 import 'package:coders_oasis/shared/components/constants.dart';
 import 'package:coders_oasis/shared/cubit/applayout-cubit/applayout_cubit.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -20,7 +22,7 @@ class ProfileScreen extends StatelessWidget {
               child: Text(
                 "Profile",
                 style: GoogleFonts.rubik(
-                  color: darkFont,
+                    color: darkFont,
                     fontSize: 24,
                     fontWeight: FontWeight.w500,
                     letterSpacing: -0.5),
@@ -43,17 +45,17 @@ class ProfileScreen extends StatelessWidget {
             ),
             Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+              const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
               child: profileItem(label: "Your Courses"),
             ),
             Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+              const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
               child: profileItem(label: "Saved"),
             ),
             Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+              const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
               child: profileItem(label: "Payment"),
             ),
             TextButton(
@@ -74,7 +76,7 @@ class ProfileScreen extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: backButton(onTap: (){
+          child: backButton(onTap: () {
             AppLayoutCubit.get(context).changeIndex(0);
           }),
         )

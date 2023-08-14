@@ -1,3 +1,4 @@
+import 'package:coders_oasis/screens/app-screens/course-details-screen/course_details_screen.dart';
 import 'package:coders_oasis/shared/components/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -420,65 +421,71 @@ Widget profileItem({required String label}) => Card(
 Widget courseItem(
         {required String duration,
         required String courseTitle,
-        required String courseDescription}) =>
-    Card(
-      shape: RoundedRectangleBorder(
-          side: BorderSide(width: 1.5, color: gray),
-          borderRadius: BorderRadius.circular(16)),
-      elevation: 0,
-      surfaceTintColor: Colors.black,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ClipRRect(
-            borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(16), topRight: Radius.circular(16)),
-            child: SizedBox(
-              height: 200,
+        required String courseDescription,
+        required context}) =>
+    InkWell(
+      onTap: (){
+        navigateTo(context, CourseDetailsScreen());
+      },
+      child: Card(
+        shape: RoundedRectangleBorder(
+            side: BorderSide(width: 1.5, color: gray),
+            borderRadius: BorderRadius.circular(16)),
+        elevation: 0,
+        surfaceTintColor: Colors.black,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ClipRRect(
+              borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(16), topRight: Radius.circular(16)),
+              child: SizedBox(
+                height: 200,
+                width: double.infinity,
+                child: Image.asset(
+                  "assets/images/images/ui-course.jpg",
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Container(
+              color: Colors.white,
               width: double.infinity,
-              child: Image.asset(
-                "assets/images/images/ui-course.jpg",
-                fit: BoxFit.cover,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      duration,
+                      style: GoogleFonts.rubik(
+                          color: successColor,
+                          letterSpacing: -0.5,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14),
+                    ),
+                    Text(
+                      courseTitle,
+                      style: GoogleFonts.rubik(
+                          color: darkFont,
+                          letterSpacing: -0.5,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 24),
+                    ),
+                    Text(
+                      courseDescription,
+                      style: GoogleFonts.rubik(
+                          color: darkFont,
+                          letterSpacing: -0.5,
+                          fontWeight: FontWeight.w400,
+                          fontSize: 14),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          Container(
-            color: Colors.white,
-            width: double.infinity,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    duration,
-                    style: GoogleFonts.rubik(
-                        color: successColor,
-                        letterSpacing: -0.5,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14),
-                  ),
-                  Text(
-                    courseTitle,
-                    style: GoogleFonts.rubik(
-                        color: darkFont,
-                        letterSpacing: -0.5,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 24),
-                  ),
-                  Text(
-                    courseDescription,
-                    style: GoogleFonts.rubik(
-                        color: darkFont,
-                        letterSpacing: -0.5,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 14),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
 

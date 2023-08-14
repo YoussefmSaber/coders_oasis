@@ -65,7 +65,7 @@ class ForgetPasswordScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: backButton(onTap: () {
-                navigateAndFinish(context, const LoginScreen());
+                navigateAndFinish(context, LoginScreen());
               }),
             )
           ]),

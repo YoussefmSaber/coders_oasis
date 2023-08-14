@@ -1,3 +1,4 @@
+import 'package:coders_oasis/screens/app-screens/course-details-screen/course_details_screen.dart';
 import 'package:coders_oasis/screens/authentication-screens/login/login_screen.dart';
 import 'package:coders_oasis/screens/onboarding/onboarding.dart';
 import 'package:coders_oasis/shared/bloc_observer.dart';
@@ -6,6 +7,7 @@ import 'package:coders_oasis/shared/cubit/onboarding_cubit/onboarding_cubit.dart
 import 'package:coders_oasis/shared/cubit/onboarding_cubit/onboarding_states.dart';
 import 'package:coders_oasis/shared/cubit/settings-cubit/settings_cubit.dart';
 import 'package:coders_oasis/shared/network/local/cahce_helper.dart';
+import 'package:coders_oasis/shared/network/remote/api-keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -14,8 +16,8 @@ import 'layout/app-layout/app_layout.dart';
 
 Future<void> main() async {
   await Supabase.initialize(
-    url: '',
-    anonKey: 'public-anon-key',
+      url: projectUrl,
+      anonKey: projectApiKey,
   );
 
   WidgetsFlutterBinding.ensureInitialized();
@@ -48,7 +50,7 @@ class MyApp extends StatelessWidget {
             listener: (context, state) {},
             builder: (context, state) => MaterialApp(
                   title: 'Flutter Demo',
-                  home: Scaffold(body: SafeArea(child: AppLayout())),
+                  home: Scaffold(body: SafeArea(child: CourseDetailsScreen())),
                   debugShowCheckedModeBanner: false,
                   theme: ThemeData(
                     useMaterial3: true,
@@ -58,7 +60,7 @@ class MyApp extends StatelessWidget {
 
   Widget openScreen() {
     if (onBoarding) {
-      return const LoginScreen();
+      return LoginScreen();
     } else {
       return OnBoardingScreen();
     }

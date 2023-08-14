@@ -81,7 +81,8 @@ class CoursesScreen extends StatelessWidget {
                   itemBuilder: (context, index) => courseItem(
                       duration: "3 h 30 min",
                       courseTitle: "UI",
-                      courseDescription: "Advanced mobile interface design")),
+                      courseDescription: "Advanced mobile interface design",
+                      context: context)),
             )
           ],
         ),
