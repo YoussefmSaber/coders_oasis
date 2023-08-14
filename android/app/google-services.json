@@ -29,6 +29,13 @@
             {
               "client_id": "159275888801-3si95dte48l3oanbkf79og5m43llatu3.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "159275888801-6h445hbsrnnavasiv3bp042raf8h6ied.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.codersOasis"
+              }
             }
           ]
         }

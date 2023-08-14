@@ -16,8 +16,8 @@ import 'layout/app-layout/app_layout.dart';
 
 Future<void> main() async {
   await Supabase.initialize(
-      url: projectUrl,
-      anonKey: projectApiKey,
+    url: projectUrl,
+    anonKey: projectanonKey,
   );
 
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
             listener: (context, state) {},
             builder: (context, state) => MaterialApp(
                   title: 'Flutter Demo',
-                  home: Scaffold(body: SafeArea(child: CourseDetailsScreen())),
+                  home: Scaffold(body: SafeArea(child: LoginScreen())),
                   debugShowCheckedModeBanner: false,
                   theme: ThemeData(
                     useMaterial3: true,

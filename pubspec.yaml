@@ -47,8 +47,10 @@ dependencies:
   shared_preferences: ^2.2.0
   smooth_page_indicator: ^1.1.0
   conditional_builder_null_safety: ^0.0.6
-  flutter_appauth: ^6.0.1
+  flutter_appauth: ^6.0.2
   crypto: ^3.0.3
+  supabase_auth_ui: ^0.2.1
+  google_sign_in: ^6.1.4
 
 dev_dependencies:
   flutter_test:

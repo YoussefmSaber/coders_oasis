@@ -1,21 +1,18 @@
 import 'package:coders_oasis/screens/authentication-screens/forgetPassword/forget_password_screen.dart';
 import 'package:coders_oasis/shared/components/components.dart';
 import 'package:coders_oasis/shared/components/constants.dart';
-import 'package:coders_oasis/shared/network/remote/api-keys.dart';
-import 'package:flutter/foundation.dart';
+import 'package:coders_oasis/shared/network/remote/google-signin.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../signup/signup_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
 
-  final supabase = Supabase.instance.client;
-
   @override
   Widget build(BuildContext context) {
+    GoogleSignInApi.signOut();
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
@@ -53,22 +50,12 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   iconButton(
                       heroTag: 'google',
-                      onTap: () {
-                        return supabase.auth
-                            .signInWithOAuth(Provider.google,
-                            redirectTo: 'https://wfppzqbzandnuqqxrhez.supabase.co/',
-                            authScreenLaunchMode:
-                            LaunchMode.inAppWebView,
-                          queryParams: {
-                              "apikey": projectApiKey
-                          }
-                        )
-                            .then((value) => print(value))
-                            .catchError((error) => print(error));
+                      onTap: () async {
+                        signIn();
                       },
                       buttonImage: const Image(
                         image:
-                        AssetImage("assets/images/icons/google-icon.png"),
+                            AssetImage("assets/images/icons/google-icon.png"),
                       )),
                   iconButton(
                       heroTag: 'facebook',
@@ -89,14 +76,14 @@ class LoginScreen extends StatelessWidget {
               ),
               Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+                      const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
                   child: defaultTextField(
                       labelText: "Email",
                       inputType: TextInputType.emailAddress,
                       isPassword: false)),
               Padding(
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+                      const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
                   child: defaultTextField(
                       labelText: "Password",
                       inputType: TextInputType.emailAddress,
@@ -122,7 +109,7 @@ class LoginScreen extends StatelessWidget {
               ),
               Padding(
                 padding:
-                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
                 child: defaultButton(
                     text: "Log in",
                     onTap: () {},
@@ -153,5 +140,11 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future signIn() async {
+    final user = await GoogleSignInApi.login();
+
+    print(user.toString());
   }
 }
