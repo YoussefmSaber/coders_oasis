@@ -2,6 +2,7 @@ import 'package:coders_oasis/shared/components/components.dart';
 import 'package:coders_oasis/shared/components/constants.dart';
 import 'package:coders_oasis/shared/network/remote/google-signin.dart';
 import 'package:coders_oasis/shared/network/remote/supabase_api.dart';
+import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -90,36 +91,44 @@ class _CoursesScreenState extends State<CoursesScreen> {
             const SizedBox(
               height: 16,
             ),
-            Expanded(
-                child: FutureBuilder<List<Course>>(
-              future: coursesFuture,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return CircularProgressIndicator();
-                } else if (snapshot.hasError) {
-                  return Text('Error: ${snapshot.error}');
-                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                  return Text('No courses found.');
-                } else {
-                  return ListView.builder(
-                    itemCount: snapshot.data!.length,
-                    physics: const BouncingScrollPhysics(
-                      decelerationRate: ScrollDecelerationRate.normal,
-                    ),
-                    itemBuilder: (context, index) {
-                      final course = snapshot.data![index];
-                      return courseItem(
-                        duration: course.duration,
-                        courseTitle: course.name,
-                        courseDescription: course.brief_desc,
-                        imageLink: course.thumbnail_path,
-                        context: context,
-                      );
+            FutureBuilder<List<Course>>(
+                future: coursesFuture,
+                builder: (context, snapshot) {
+                  return ConditionalBuilder(
+                    condition:
+                        snapshot.connectionState == ConnectionState.waiting,
+                    builder: (context) => Expanded(
+                        child: Column(children: [
+                      const Spacer(),
+                      CircularProgressIndicator(
+                        color: defaultColor,
+                      ),
+                      const Spacer()
+                    ])),
+                    fallback: (context) {
+                      if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                        return Text('No courses found.');
+                      } else {
+                        return Expanded(
+                            child: ListView.builder(
+                          itemCount: snapshot.data!.length,
+                          physics: const BouncingScrollPhysics(
+                            decelerationRate: ScrollDecelerationRate.normal,
+                          ),
+                          itemBuilder: (context, index) {
+                            final course = snapshot.data![index];
+                            return courseItem(
+                              course: course,
+                              context: context,
+                            );
+                          },
+                        ));
+                      }
                     },
                   );
-                }
-              },
-            ))
+                })
           ],
         ),
       ),

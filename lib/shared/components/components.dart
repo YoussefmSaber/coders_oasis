@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import '../../models/boarding_model.dart';
+import '../../models/course_model.dart';
 
 Widget onBoardingItem(
   BoardingModel onBoardingItem,
@@ -418,15 +419,9 @@ Widget profileItem({required String label}) => Card(
       ),
     );
 
-Widget courseItem(
-        {required String duration,
-        required String courseTitle,
-        required String courseDescription,
-        required String imageLink,
-        required context}) =>
-    InkWell(
+Widget courseItem({required Course course, required context}) => InkWell(
       onTap: () {
-        navigateTo(context, CourseDetailsScreen());
+        navigateTo(context, CourseDetailsScreen(course: course));
       },
       child: Card(
         shape: RoundedRectangleBorder(
@@ -444,7 +439,7 @@ Widget courseItem(
                 height: 200,
                 width: double.infinity,
                 child: Image.network(
-                  imageLink,
+                  course.thumbnail_path,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -458,7 +453,7 @@ Widget courseItem(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      duration,
+                      course.duration,
                       style: GoogleFonts.rubik(
                           color: successColor,
                           letterSpacing: -0.5,
@@ -466,7 +461,7 @@ Widget courseItem(
                           fontSize: 14),
                     ),
                     Text(
-                      courseTitle,
+                      course.name,
                       style: GoogleFonts.rubik(
                           color: darkFont,
                           letterSpacing: -0.5,
@@ -474,7 +469,7 @@ Widget courseItem(
                           fontSize: 24),
                     ),
                     Text(
-                      courseDescription,
+                      course.brief_desc,
                       style: GoogleFonts.rubik(
                           color: darkFont,
                           letterSpacing: -0.5,

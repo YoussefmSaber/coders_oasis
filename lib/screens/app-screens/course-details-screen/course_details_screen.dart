@@ -3,10 +3,13 @@ import 'package:coders_oasis/shared/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../models/course_model.dart';
 import '../../../shared/components/constants.dart';
 
 class CourseDetailsScreen extends StatelessWidget {
-  const CourseDetailsScreen({super.key});
+  final Course course;
+
+  CourseDetailsScreen({super.key, required this.course});
 
   @override
   Widget build(BuildContext context) {
@@ -21,42 +24,29 @@ class CourseDetailsScreen extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
-                    child: Text(
-                      "Course Name",
-                      style: GoogleFonts.rubik(
-                        letterSpacing: -0.5,
-                        color: darkFont,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w500,
+                    child: SizedBox(
+                      width: 250,
+                      child: Text(
+                        course.name,
+                        style: GoogleFonts.rubik(
+                          textStyle: TextStyle(
+                            letterSpacing: -0.5,
+                            color: darkFont,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.center,
                       ),
                     ),
                   ),
                   ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    child: Image.asset(
-                      "assets/images/images/ui-course.jpg",
+                    child: Image.network(
+                      course.thumbnail_path,
                       width: double.infinity,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Align(
-                      alignment: Alignment.bottomRight,
-                      child: Card(
-                        color: secondaryColor,
-                        elevation: 0,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 12.0, vertical: 2),
-                          child: Text(
-                            "\$ 50",
-                            style: GoogleFonts.rubik(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.white),
-                          ),
-                        ),
-                      ),
                     ),
                   ),
                   Align(
@@ -76,8 +66,7 @@ class CourseDetailsScreen extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.only(left: 4.0),
-                    child: Text(
-                        "You can launch a new career in web development today by learning HTML & CSS. You don't need a computer science degree or expensive software. All you need is a computer, a bit of time, a lot of determination, and a teacher you trust.",
+                    child: Text(course.description,
                         style: GoogleFonts.rubik(
                             fontSize: 14,
                             height: 1.5,
@@ -87,8 +76,8 @@ class CourseDetailsScreen extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Padding(
-                      padding:
-                          const EdgeInsets.only(left: 4.0, top: 16.0, bottom: 8),
+                      padding: const EdgeInsets.only(
+                          left: 4.0, top: 16.0, bottom: 8),
                       child: Text(
                         "Duration",
                         style: GoogleFonts.rubik(
@@ -106,7 +95,7 @@ class CourseDetailsScreen extends StatelessWidget {
                         left: 4.0,
                       ),
                       child: Text(
-                        "1 h 30 min",
+                        course.duration,
                         style: GoogleFonts.rubik(
                             color: darkFont,
                             fontWeight: FontWeight.w400,
