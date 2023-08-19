@@ -422,9 +422,10 @@ Widget courseItem(
         {required String duration,
         required String courseTitle,
         required String courseDescription,
+        required String imageLink,
         required context}) =>
     InkWell(
-      onTap: (){
+      onTap: () {
         navigateTo(context, CourseDetailsScreen());
       },
       child: Card(
@@ -442,8 +443,8 @@ Widget courseItem(
               child: SizedBox(
                 height: 200,
                 width: double.infinity,
-                child: Image.asset(
-                  "assets/images/images/ui-course.jpg",
+                child: Image.network(
+                  imageLink,
                   fit: BoxFit.cover,
                 ),
               ),

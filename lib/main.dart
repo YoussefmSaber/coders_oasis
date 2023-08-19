@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
             listener: (context, state) {},
             builder: (context, state) => MaterialApp(
                   title: 'Flutter Demo',
-                  home: Scaffold(body: SafeArea(child: LoginScreen())),
+                  home: Scaffold(body: SafeArea(child: AppLayout())),
                   debugShowCheckedModeBanner: false,
                   theme: ThemeData(
                     useMaterial3: true,

@@ -30,6 +30,7 @@ class LoginScreen extends StatelessWidget {
               Text("Log in",
                   style: GoogleFonts.rubik(
                       textStyle: TextStyle(
+                          letterSpacing: -0.5,
                           color: darkFont,
                           fontSize: 24,
                           fontWeight: FontWeight.w500))),

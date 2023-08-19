@@ -1,14 +1,31 @@
 import 'package:coders_oasis/shared/components/components.dart';
 import 'package:coders_oasis/shared/components/constants.dart';
+import 'package:coders_oasis/shared/network/remote/google-signin.dart';
+import 'package:coders_oasis/shared/network/remote/supabase_api.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CoursesScreen extends StatelessWidget {
-  const CoursesScreen({super.key});
+import '../../../models/course_model.dart';
+
+class CoursesScreen extends StatefulWidget {
+  const CoursesScreen({Key? key}) : super(key: key);
+
+  @override
+  _CoursesScreenState createState() => _CoursesScreenState();
+}
+
+class _CoursesScreenState extends State<CoursesScreen> {
+  final supabaseService = SupabaseService();
+  late Future<List<Course>> coursesFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    coursesFuture = supabaseService.getAllCourses();
+  }
 
   @override
   Widget build(BuildContext context) {
-    FocusNode myFocusNode = new FocusNode();
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
@@ -74,16 +91,35 @@ class CoursesScreen extends StatelessWidget {
               height: 16,
             ),
             Expanded(
-              child: ListView.builder(
-                  itemCount: 3,
-                  physics: const BouncingScrollPhysics(
-                      decelerationRate: ScrollDecelerationRate.normal),
-                  itemBuilder: (context, index) => courseItem(
-                      duration: "3 h 30 min",
-                      courseTitle: "UI",
-                      courseDescription: "Advanced mobile interface design",
-                      context: context)),
-            )
+                child: FutureBuilder<List<Course>>(
+              future: coursesFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator();
+                } else if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                  return Text('No courses found.');
+                } else {
+                  return ListView.builder(
+                    itemCount: snapshot.data!.length,
+                    physics: const BouncingScrollPhysics(
+                      decelerationRate: ScrollDecelerationRate.normal,
+                    ),
+                    itemBuilder: (context, index) {
+                      final course = snapshot.data![index];
+                      return courseItem(
+                        duration: course.duration,
+                        courseTitle: course.name,
+                        courseDescription: course.brief_desc,
+                        imageLink: course.thumbnail_path,
+                        context: context,
+                      );
+                    },
+                  );
+                }
+              },
+            ))
           ],
         ),
       ),
