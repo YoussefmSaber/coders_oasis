@@ -45,7 +45,7 @@ class CourseDetailsScreen extends StatelessWidget {
                   ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(10)),
                     child: Image.network(
-                      course.thumbnail_path,
+                      course.thumbnailPath,
                       width: double.infinity,
                     ),
                   ),
@@ -115,7 +115,7 @@ class CourseDetailsScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: backButton(onTap: () {
-                navigateTo(context, AppLayout());
+                Navigator.pop(context);
               }),
             )
           ],

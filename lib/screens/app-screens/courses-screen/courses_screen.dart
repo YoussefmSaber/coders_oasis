@@ -1,3 +1,4 @@
+import 'package:animations/animations.dart';
 import 'package:coders_oasis/shared/components/components.dart';
 import 'package:coders_oasis/shared/components/constants.dart';
 import 'package:coders_oasis/shared/network/remote/google-signin.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../models/course_model.dart';
+import '../course-details-screen/course_details_screen.dart';
 
 class CoursesScreen extends StatefulWidget {
   const CoursesScreen({Key? key}) : super(key: key);
@@ -119,10 +121,24 @@ class _CoursesScreenState extends State<CoursesScreen> {
                           ),
                           itemBuilder: (context, index) {
                             final course = snapshot.data![index];
-                            return courseItem(
-                              course: course,
-                              context: context,
-                            );
+                            return OpenContainer(
+                                openElevation: 0,
+                                closedElevation: 0,
+                                closedShape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16)),
+                                transitionDuration:
+                                    const Duration(milliseconds: 450),
+                                transitionType:
+                                    ContainerTransitionType.fadeThrough,
+                                closedBuilder: (context, action) {
+                                  return courseItem(
+                                    course: course,
+                                    context: context,
+                                  );
+                                },
+                                openBuilder: (context, action) {
+                                  return CourseDetailsScreen(course: course);
+                                });
                           },
                         ));
                       }

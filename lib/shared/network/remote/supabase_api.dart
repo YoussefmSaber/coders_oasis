@@ -1,6 +1,8 @@
 import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 import 'package:coders_oasis/models/course_model.dart';
 
+import '../../../models/video_model.dart';
+
 class SupabaseService {
   static final supabase = Supabase.instance.client;
 
@@ -26,11 +28,14 @@ class SupabaseService {
     return courseList;
   }
 
-  Future<void> getCourseVideos({required String courseId}) async {
+  Future<List<Video>> getCourseVideos({required String courseId}) async {
     final response =
         await supabase.from('videos').select('*').eq('course_id', courseId);
 
-    final videos = response.data as List<dynamic>;
+    final videos = (response as List<dynamic>)
+        .map((json) => Video.fromJson(json))
+        .toList();
     print('Fetched videos: $videos');
+    return videos;
   }
 }

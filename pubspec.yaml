@@ -51,6 +51,7 @@ dependencies:
   crypto: ^3.0.3
   supabase_auth_ui: ^0.2.1
   google_sign_in: ^6.1.4
+  animations: ^2.0.7
 
 dev_dependencies:
   flutter_test:

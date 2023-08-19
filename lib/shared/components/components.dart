@@ -419,69 +419,64 @@ Widget profileItem({required String label}) => Card(
       ),
     );
 
-Widget courseItem({required Course course, required context}) => InkWell(
-      onTap: () {
-        navigateTo(context, CourseDetailsScreen(course: course));
-      },
-      child: Card(
-        shape: RoundedRectangleBorder(
-            side: BorderSide(width: 1.5, color: gray),
-            borderRadius: BorderRadius.circular(16)),
-        elevation: 0,
-        surfaceTintColor: Colors.black,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(16), topRight: Radius.circular(16)),
-              child: SizedBox(
-                height: 200,
-                width: double.infinity,
-                child: Image.network(
-                  course.thumbnail_path,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-            Container(
-              color: Colors.white,
+Widget courseItem({required Course course, required context}) => Card(
+      shape: RoundedRectangleBorder(
+          side: BorderSide(width: 1.5, color: gray),
+          borderRadius: BorderRadius.circular(16)),
+      elevation: 0,
+      surfaceTintColor: Colors.black,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ClipRRect(
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(16), topRight: Radius.circular(16)),
+            child: SizedBox(
+              height: 200,
               width: double.infinity,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      course.duration,
-                      style: GoogleFonts.rubik(
-                          color: successColor,
-                          letterSpacing: -0.5,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 14),
-                    ),
-                    Text(
-                      course.name,
-                      style: GoogleFonts.rubik(
-                          color: darkFont,
-                          letterSpacing: -0.5,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 24),
-                    ),
-                    Text(
-                      course.brief_desc,
-                      style: GoogleFonts.rubik(
-                          color: darkFont,
-                          letterSpacing: -0.5,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 14),
-                    ),
-                  ],
-                ),
+              child: Image.network(
+                course.thumbnailPath,
+                fit: BoxFit.cover,
               ),
             ),
-          ],
-        ),
+          ),
+          Container(
+            color: Colors.white,
+            width: double.infinity,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    course.duration,
+                    style: GoogleFonts.rubik(
+                        color: successColor,
+                        letterSpacing: -0.5,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14),
+                  ),
+                  Text(
+                    course.name,
+                    style: GoogleFonts.rubik(
+                        color: darkFont,
+                        letterSpacing: -0.5,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 24),
+                  ),
+                  Text(
+                    course.briefDesc,
+                    style: GoogleFonts.rubik(
+                        color: darkFont,
+                        letterSpacing: -0.5,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
 
