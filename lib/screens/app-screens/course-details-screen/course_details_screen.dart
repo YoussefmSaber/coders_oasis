@@ -1,4 +1,3 @@
-import 'package:coders_oasis/layout/app-layout/app_layout.dart';
 import 'package:coders_oasis/shared/components/components.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

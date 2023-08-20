@@ -14,16 +14,16 @@ class AppLayoutCubit extends Cubit<AppLayoutStates> {
       label: "Courses",
     ),
     BottomNavigationBarItem(
-        icon: ImageIcon(AssetImage("assets/images/icons/profile.png")),
+        icon: Icon(Icons.person),
         label: "Profile"),
     BottomNavigationBarItem(
-        icon: ImageIcon(AssetImage("assets/images/icons/settings.png")),
+        icon: Icon(Icons.settings_rounded),
         label: "Settings")
   ];
-  List<Widget> appScreens = const [
+  List<Widget> appScreens = [
     CoursesScreen(),
-    ProfileScreen(),
-    SettingsScreen()
+    const ProfileScreen(),
+    const SettingsScreen()
   ];
 
   static AppLayoutCubit get(context) => BlocProvider.of(context);

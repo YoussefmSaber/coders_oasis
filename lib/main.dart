@@ -3,6 +3,7 @@ import 'package:coders_oasis/screens/authentication-screens/login/login_screen.d
 import 'package:coders_oasis/screens/onboarding/onboarding.dart';
 import 'package:coders_oasis/shared/bloc_observer.dart';
 import 'package:coders_oasis/shared/cubit/applayout-cubit/applayout_cubit.dart';
+import 'package:coders_oasis/shared/cubit/courses-screen-cubit/courses_cubit.dart';
 import 'package:coders_oasis/shared/cubit/onboarding_cubit/onboarding_cubit.dart';
 import 'package:coders_oasis/shared/cubit/onboarding_cubit/onboarding_states.dart';
 import 'package:coders_oasis/shared/cubit/settings-cubit/settings_cubit.dart';
@@ -44,7 +45,8 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(create: (context) => OnBoardingCubit()),
           BlocProvider(create: (context) => AppLayoutCubit()),
-          BlocProvider(create: (context) => SettingsCubit())
+          BlocProvider(create: (context) => SettingsCubit()),
+          BlocProvider(create: (context) => CoursesScreenCubit())
         ],
         child: BlocConsumer<OnBoardingCubit, OnBoardingStates>(
             listener: (context, state) {},

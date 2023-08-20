@@ -48,8 +48,8 @@ class SettingsScreen extends StatelessWidget {
                                 "assets/images/images/settings-image.png")),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(
-                            left: 16, right: 16, top: 8, bottom: 28),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 8, horizontal: 16),
                         child: Card(
                           shape: RoundedRectangleBorder(
                             side: BorderSide(width: 1.5, color: gray),
@@ -96,33 +96,55 @@ class SettingsScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Align(
-                        alignment: Alignment.bottomLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 24, vertical: 8),
-                          child: Text(
-                            "Account information",
-                            style: TextStyle(
-                                letterSpacing: -0.50,
-                                fontSize: 24,
-                                fontWeight: FontWeight.w500,
-                                color: darkFont),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 8, horizontal: 16),
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(width: 1.5, color: gray),
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                          color: Colors.transparent,
+                          elevation: 0,
+                          surfaceTintColor: Colors.black,
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(24.0),
+                                child: CircleAvatar(
+                                  backgroundColor: secondaryColor,
+                                  child: const Icon(
+                                    Icons.dark_mode_rounded,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                              Text("Dark Mode",
+                                  style: GoogleFonts.rubik(
+                                    textStyle: TextStyle(
+                                        letterSpacing: -0.50,
+                                        fontSize: 20,
+                                        color: darkFont,
+                                        fontWeight: FontWeight.w500),
+                                  )),
+                              const Spacer(),
+                              Padding(
+                                padding: const EdgeInsets.all(24.0),
+                                child: Switch(
+                                    activeColor: lightGray,
+                                    splashRadius: 0,
+                                    materialTapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
+                                    activeTrackColor: successColor,
+                                    inactiveTrackColor: Colors.transparent,
+                                    value: cubit.isNotificationOn,
+                                    onChanged: (state) =>
+                                        cubit.changeNotificationState(state)),
+                              )
+                            ],
                           ),
                         ),
                       ),
-                      settingsItem(
-                          label: "Name",
-                          itemIcon: Icons.person,
-                          subLabel: "Youssef Mohamed"),
-                      settingsItem(
-                          label: "Email",
-                          itemIcon: Icons.email_rounded,
-                          subLabel: "youssef.mu.saber@gmail.com"),
-                      settingsItem(
-                          label: "Password",
-                          itemIcon: Icons.lock_rounded,
-                          subLabel: "Changed 2 weeks ago"),
                     ],
                   ),
                   Padding(

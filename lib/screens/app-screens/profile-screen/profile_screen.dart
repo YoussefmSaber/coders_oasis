@@ -48,16 +48,34 @@ class ProfileScreen extends StatelessWidget {
               const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
               child: profileItem(label: "Your Courses"),
             ),
-            Padding(
-              padding:
-              const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-              child: profileItem(label: "Saved"),
+            const SizedBox(height: 16,),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 24, vertical: 8),
+                child: Text(
+                  "Account information",
+                  style: TextStyle(
+                      letterSpacing: -0.50,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500,
+                      color: darkFont),
+                ),
+              ),
             ),
-            Padding(
-              padding:
-              const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-              child: profileItem(label: "Payment"),
-            ),
+            settingsItem(
+                label: "Name",
+                itemIcon: Icons.person,
+                subLabel: "Youssef Mohamed"),
+            settingsItem(
+                label: "Email",
+                itemIcon: Icons.email_rounded,
+                subLabel: "youssef.mu.saber@gmail.com"),
+            settingsItem(
+                label: "Password",
+                itemIcon: Icons.lock_rounded,
+                subLabel: "Changed 2 weeks ago"),
             TextButton(
                 style: ButtonStyle(
                     splashFactory: InkSplash.splashFactory,
