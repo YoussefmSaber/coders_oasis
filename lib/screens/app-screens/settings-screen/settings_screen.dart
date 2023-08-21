@@ -137,9 +137,9 @@ class SettingsScreen extends StatelessWidget {
                                         MaterialTapTargetSize.shrinkWrap,
                                     activeTrackColor: successColor,
                                     inactiveTrackColor: Colors.transparent,
-                                    value: cubit.isNotificationOn,
+                                    value: cubit.isDarkMode,
                                     onChanged: (state) =>
-                                        cubit.changeNotificationState(state)),
+                                        cubit.changeDarkModeState(state)),
                               )
                             ],
                           ),

@@ -12,4 +12,11 @@ class SettingsCubit extends Cubit<SettingsStates> {
     isNotificationOn = notificationState;
     emit(SettingsChangedState());
   }
+
+  bool isDarkMode = false;
+
+  void changeDarkModeState(darkModeState) {
+    isDarkMode = darkModeState;
+    emit(SettingsChangedState());
+  }
 }

@@ -1,10 +1,9 @@
+import 'package:coders_oasis/screens/app-screens/my-courses-screen/my_courses.dart';
 import 'package:coders_oasis/shared/components/components.dart';
 import 'package:coders_oasis/shared/components/constants.dart';
 import 'package:coders_oasis/shared/cubit/applayout-cubit/applayout_cubit.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -45,15 +44,19 @@ class ProfileScreen extends StatelessWidget {
             ),
             Padding(
               padding:
-              const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-              child: profileItem(label: "Your Courses"),
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+              child: profileItem(label: "Your Courses", onTap: () {
+                navigateTo(context, MyCoursesScreen());
+              }),
             ),
-            const SizedBox(height: 16,),
+            const SizedBox(
+              height: 16,
+            ),
             Align(
               alignment: Alignment.bottomLeft,
               child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 24, vertical: 8),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
                 child: Text(
                   "Account information",
                   style: TextStyle(

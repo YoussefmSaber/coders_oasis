@@ -1,4 +1,5 @@
 import 'package:coders_oasis/screens/app-screens/course-details-screen/course_details_screen.dart';
+import 'package:coders_oasis/screens/app-screens/my-courses-screen/my_courses.dart';
 import 'package:coders_oasis/screens/authentication-screens/login/login_screen.dart';
 import 'package:coders_oasis/screens/onboarding/onboarding.dart';
 import 'package:coders_oasis/shared/bloc_observer.dart';

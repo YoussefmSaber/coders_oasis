@@ -390,30 +390,36 @@ Widget settingsItem(
       ),
     );
 
-Widget profileItem({required String label}) => Card(
-      surfaceTintColor: Colors.white,
+Widget profileItem({required String label, required Function onTap}) => Card(
+      color: Colors.transparent,
       elevation: 0,
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
           side: BorderSide(width: 1.5, color: gray)),
-      color: Colors.white,
-      child: SizedBox(
-        width: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.all(22.0),
-          child: Row(
-            children: [
-              const Spacer(),
-              Text(
-                label,
-                style: GoogleFonts.rubik(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                    color: darkFont,
-                    letterSpacing: -0.5),
-              ),
-              const Spacer()
-            ],
+      child: InkWell(
+        borderRadius: BorderRadius.circular(12),
+        splashColor: defaultColorTransparent,
+        onTap: () {
+          onTap();
+        },
+        child: SizedBox(
+          width: double.infinity,
+          child: Padding(
+            padding: const EdgeInsets.all(22.0),
+            child: Row(
+              children: [
+                const Spacer(),
+                Text(
+                  label,
+                  style: GoogleFonts.rubik(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
+                      color: darkFont,
+                      letterSpacing: -0.5),
+                ),
+                const Spacer()
+              ],
+            ),
           ),
         ),
       ),
