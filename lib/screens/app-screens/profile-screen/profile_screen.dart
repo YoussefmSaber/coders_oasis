@@ -9,10 +9,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfileScreen extends StatelessWidget {
-  ProfileScreen({super.key});
 
-  var userName = CacheHelper.getData(key: "displayName");
-  var userEmail = CacheHelper.getData(key: "userEmail");
+  String userName;
+  String userEmail;
+
+  ProfileScreen({super.key, required this.userName, required this.userEmail});
+
   var supabaseService = SupabaseService();
 
   @override
@@ -97,7 +99,9 @@ class ProfileScreen extends StatelessWidget {
                     })),
                 onPressed: () {
                   supabaseService.signout();
-                  CacheHelper.clearCache();
+                  CacheHelper.clearData(key: "displayName");
+                  CacheHelper.clearData(key: "userEmail");
+                  AppLayoutCubit().currentIndex = 0;
                   navigateAndFinish(context, LoginScreen());
                 },
                 child: Text(

@@ -6,7 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../shared/cubit/applayout-cubit/applayout_states.dart';
 
 class AppLayout extends StatelessWidget {
-
   int selectedItemIndex = 0;
 
   @override
@@ -25,7 +24,25 @@ class AppLayout extends StatelessWidget {
             selectedItemColor: defaultColor,
             onTap: (index) => cubit.changeIndex(index),
           ),
-          body: SafeArea(child: cubit.appScreens[cubit.currentIndex]),
+          body: SafeArea(
+            child: FutureBuilder(
+              // Wait for appScreens to be initialized
+              future: cubit.appScreensInitialized,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (snapshot.hasError) {
+                  return Center(
+                    child: Text('Error: ${snapshot.error}'),
+                  );
+                } else {
+                  return cubit.appScreens[cubit.currentIndex];
+                }
+              },
+            ),
+          ),
         );
       },
     );
