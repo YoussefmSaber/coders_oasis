@@ -3,6 +3,8 @@ import 'package:coders_oasis/shared/components/components.dart';
 import 'package:coders_oasis/shared/components/constants.dart';
 import 'package:coders_oasis/shared/cubit/courses-screen-cubit/courses_cubit.dart';
 import 'package:coders_oasis/shared/cubit/courses-screen-cubit/courses_states.dart';
+import 'package:coders_oasis/shared/network/local/cahce_helper.dart';
+import 'package:coders_oasis/shared/network/remote/supabase_api.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,12 +13,12 @@ import '../../../models/course_model.dart';
 import '../course-details-screen/course_details_screen.dart';
 
 class CoursesScreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     var cubit = CoursesScreenCubit.get(context);
+    var userName = CacheHelper.getData(key: "displayName");
     return BlocConsumer<CoursesScreenCubit, CoursesScreenStates>(
-      listener: (context, state){},
+      listener: (context, state) {},
       builder: (context, state) => Scaffold(
         backgroundColor: Colors.white,
         body: Padding(
@@ -37,13 +39,14 @@ class CoursesScreen extends StatelessWidget {
                             fontSize: 18),
                       ),
                       Text(
-                        "Youssef Mohammed",
+                        userName,
+                        overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.rubik(
                             fontWeight: FontWeight.w600,
                             color: darkFont,
                             letterSpacing: -0.5,
                             fontSize: 24),
-                      )
+                      ),
                     ],
                   ),
                   const Spacer(),
@@ -89,27 +92,28 @@ class CoursesScreen extends StatelessWidget {
                           snapshot.connectionState == ConnectionState.waiting,
                       builder: (context) => Expanded(
                           child: Column(children: [
-                            const Spacer(),
-                            CircularProgressIndicator(
-                            color: defaultColor,
-                            ),
-                            const Spacer()
+                        const Spacer(),
+                        CircularProgressIndicator(
+                          color: defaultColor,
+                        ),
+                        const Spacer()
                       ])),
                       fallback: (context) {
                         if (snapshot.hasError) {
                           return Text('Error: ${snapshot.error}');
-                        } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                        } else if (!snapshot.hasData ||
+                            snapshot.data!.isEmpty) {
                           return Text('No courses found.');
                         } else {
                           return Expanded(
                               child: ListView.separated(
-                                itemCount: snapshot.data!.length,
-                                physics: const BouncingScrollPhysics(
-                                  decelerationRate: ScrollDecelerationRate.normal,
-                                ),
-                                itemBuilder: (context, index) {
-                                final course = snapshot.data![index];
-                                return OpenContainer(
+                            itemCount: snapshot.data!.length,
+                            physics: const BouncingScrollPhysics(
+                              decelerationRate: ScrollDecelerationRate.normal,
+                            ),
+                            itemBuilder: (context, index) {
+                              final course = snapshot.data![index];
+                              return OpenContainer(
                                   openElevation: 0,
                                   closedElevation: 0,
                                   closedShape: RoundedRectangleBorder(
@@ -127,7 +131,11 @@ class CoursesScreen extends StatelessWidget {
                                   openBuilder: (context, action) {
                                     return CourseDetailsScreen(course: course);
                                   });
-                              }, separatorBuilder: (BuildContext context, int index) => SizedBox(height: 8,),
+                            },
+                            separatorBuilder:
+                                (BuildContext context, int index) => SizedBox(
+                              height: 8,
+                            ),
                           ));
                         }
                       },

@@ -1,6 +1,8 @@
+import 'package:coders_oasis/layout/app-layout/app_layout.dart';
 import 'package:coders_oasis/screens/authentication-screens/forgetPassword/forget_password_screen.dart';
 import 'package:coders_oasis/shared/components/components.dart';
 import 'package:coders_oasis/shared/components/constants.dart';
+import 'package:coders_oasis/shared/network/local/cahce_helper.dart';
 import 'package:coders_oasis/shared/network/remote/google-signin.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -52,7 +54,7 @@ class LoginScreen extends StatelessWidget {
                   iconButton(
                       heroTag: 'google',
                       onTap: () async {
-                        signIn();
+                        signIn(context);
                       },
                       buttonImage: const Image(
                         image:
@@ -143,9 +145,11 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Future signIn() async {
+  Future signIn(context) async {
     final user = await GoogleSignInApi.login();
-
+    CacheHelper.saveData(key: "displayName", value: user?.displayName);
+    CacheHelper.saveData(key: "userEmail", value: user?.email);
+    navigateAndFinish(context, AppLayout());
     print(user.toString());
   }
 }

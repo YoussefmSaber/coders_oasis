@@ -1,12 +1,19 @@
 import 'package:coders_oasis/screens/app-screens/my-courses-screen/my_courses.dart';
+import 'package:coders_oasis/screens/authentication-screens/login/login_screen.dart';
 import 'package:coders_oasis/shared/components/components.dart';
 import 'package:coders_oasis/shared/components/constants.dart';
 import 'package:coders_oasis/shared/cubit/applayout-cubit/applayout_cubit.dart';
+import 'package:coders_oasis/shared/network/local/cahce_helper.dart';
+import 'package:coders_oasis/shared/network/remote/supabase_api.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  ProfileScreen({super.key});
+
+  var userName = CacheHelper.getData(key: "displayName");
+  var userEmail = CacheHelper.getData(key: "userEmail");
+  var supabaseService = SupabaseService();
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +52,11 @@ class ProfileScreen extends StatelessWidget {
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
-              child: profileItem(label: "Your Courses", onTap: () {
-                navigateTo(context, MyCoursesScreen());
-              }),
+              child: profileItem(
+                  label: "Your Courses",
+                  onTap: () {
+                    navigateTo(context, MyCoursesScreen());
+                  }),
             ),
             const SizedBox(
               height: 16,
@@ -68,13 +77,11 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             settingsItem(
-                label: "Name",
-                itemIcon: Icons.person,
-                subLabel: "Youssef Mohamed"),
+                label: "Name", itemIcon: Icons.person, subLabel: userName),
             settingsItem(
                 label: "Email",
                 itemIcon: Icons.email_rounded,
-                subLabel: "youssef.mu.saber@gmail.com"),
+                subLabel: userEmail),
             settingsItem(
                 label: "Password",
                 itemIcon: Icons.lock_rounded,
@@ -88,7 +95,11 @@ class ProfileScreen extends StatelessWidget {
                       }
                       return null;
                     })),
-                onPressed: () {},
+                onPressed: () {
+                  supabaseService.signout();
+                  CacheHelper.clearCache();
+                  navigateAndFinish(context, LoginScreen());
+                },
                 child: Text(
                   "Log out",
                   style: GoogleFonts.rubik(color: errorColor, fontSize: 14),

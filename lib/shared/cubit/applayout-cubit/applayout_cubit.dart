@@ -22,7 +22,7 @@ class AppLayoutCubit extends Cubit<AppLayoutStates> {
   ];
   List<Widget> appScreens = [
     CoursesScreen(),
-    const ProfileScreen(),
+    ProfileScreen(),
     const SettingsScreen()
   ];
 

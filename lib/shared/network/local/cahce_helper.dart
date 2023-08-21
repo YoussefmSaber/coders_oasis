@@ -1,4 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 
 class CacheHelper {
   static late SharedPreferences sharedPreferences;
@@ -21,5 +22,9 @@ class CacheHelper {
 
   Future<bool> clearData({required String key}) async {
     return await sharedPreferences.remove(key);
+  }
+
+  static Future<bool> clearCache() async {
+    return await sharedPreferences.clear();
   }
 }

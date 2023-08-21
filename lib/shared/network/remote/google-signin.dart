@@ -12,6 +12,7 @@ class GoogleSignInApi {
 
   static Future<GoogleSignInAccount?> login() async {
     final account = await _googleSignIn.signIn();
+    final supabaseService = SupabaseService();
     if (account != null) {
       final googleKey = await account.authentication;
       if (googleKey.accessToken != null) {
@@ -20,7 +21,7 @@ class GoogleSignInApi {
       if (googleKey.idToken != null) {
         userIdToken = googleKey.idToken!;
       }
-      SupabaseService.signInUsingToken(
+      supabaseService.signInUsingToken(
           provider: Provider.google,
           userIdToken: userIdToken,
           userAccessToken: userAccessToken);

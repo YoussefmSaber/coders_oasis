@@ -1,22 +1,48 @@
+import 'package:coders_oasis/shared/network/remote/google-signin.dart';
 import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 import 'package:coders_oasis/models/course_model.dart';
 
 import '../../../models/video_model.dart';
 
-class SupabaseService {
-  static final supabase = Supabase.instance.client;
+import 'package:supabase/supabase.dart';
 
-  static void signInUsingToken(
-      {required Provider provider,
-      required String userIdToken,
-      String? userAccessToken}) {
-    supabase.auth
-        .signInWithIdToken(
-          provider: Provider.google,
-          idToken: userIdToken,
-          accessToken: userAccessToken,
-        )
-        .then((value) => print(value));
+class SupabaseService {
+  static final SupabaseService _singleton = SupabaseService._internal();
+
+  factory SupabaseService() {
+    return _singleton;
+  }
+
+  SupabaseService._internal();
+
+  final supabase = Supabase.instance.client;
+
+  Future<void> signInUsingToken({
+    required Provider provider,
+    required String userIdToken,
+    String? userAccessToken,
+  }) async {
+    final AuthResponse res = await supabase.auth.signInWithIdToken(
+      provider: provider,
+      idToken: userIdToken,
+      accessToken: userAccessToken,
+    );
+    final Session? session = res.session;
+    final User? user = res.user;
+
+    // You can store the user session and user data in variables here.
+  }
+
+  Future<String?> currentUserId() async {
+    return await supabase.auth.currentUser?.id;
+  }
+
+  Future<void> signout() async {
+    return await supabase.auth.signOut();
+  }
+
+  Future<String?> currentUserEmail() async {
+    return await supabase.auth.currentUser?.email;
   }
 
   Future<List<Course>> getAllCourses() async {
@@ -24,7 +50,6 @@ class SupabaseService {
     final courseList = (response as List<dynamic>)
         .map((json) => Course.fromJson(json))
         .toList();
-    print(courseList.length);
     return courseList;
   }
 
@@ -32,10 +57,9 @@ class SupabaseService {
     final response =
         await supabase.from('videos').select('*').eq('course_id', courseId);
 
-    final videos = (response as List<dynamic>)
+    final videos = (response.data as List<dynamic>)
         .map((json) => Video.fromJson(json))
         .toList();
-    print('Fetched videos: $videos');
     return videos;
   }
 }
