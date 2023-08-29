@@ -113,7 +113,7 @@ Widget backButton({
         side: BorderSide(width: 1, color: darkGray),
         borderRadius: BorderRadius.circular(100),
       ),
-      child: const Icon(Icons.arrow_back_ios_new_rounded),
+      child: Icon(Icons.arrow_back_ios_new_rounded, color: darkFont,),
     );
 
 Widget notificationButton({required Function onTap}) => FloatingActionButton(
@@ -138,8 +138,10 @@ Widget notificationButton({required Function onTap}) => FloatingActionButton(
 Widget defaultTextField(
         {required String labelText,
         required TextInputType inputType,
-        required bool isPassword}) =>
+        required bool isPassword,
+        required TextEditingController controller}) =>
     TextField(
+      controller: controller,
       obscureText: isPassword,
       cursorColor: defaultColor,
       decoration: InputDecoration(
@@ -170,10 +172,10 @@ Widget otpPin(context) => Padding(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(8.0),
             child: SizedBox(
               height: 68,
-              width: 64,
+              width: 44,
               child: TextField(
                 onChanged: (s) {
                   if (s.length == 1) {
@@ -210,10 +212,10 @@ Widget otpPin(context) => Padding(
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(8.0),
             child: SizedBox(
               height: 68,
-              width: 64,
+              width: 44,
               child: TextField(
                 onChanged: (s) {
                   if (s.length == 1) {
@@ -250,10 +252,10 @@ Widget otpPin(context) => Padding(
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(8.0),
             child: SizedBox(
-              height: 68,
-              width: 64,
+              height: 58,
+              width: 44,
               child: TextField(
                 onChanged: (s) {
                   if (s.length == 1) {
@@ -290,10 +292,90 @@ Widget otpPin(context) => Padding(
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsets.all(8.0),
             child: SizedBox(
-              height: 68,
-              width: 64,
+              height: 58,
+              width: 44,
+              child: TextField(
+                onChanged: (s) {
+                  if (s.length == 1) {
+                    FocusScope.of(context).nextFocus();
+                  }
+                },
+                cursorColor: defaultColor,
+                keyboardType: TextInputType.number,
+                textAlign: TextAlign.center,
+                inputFormatters: [
+                  LengthLimitingTextInputFormatter(1),
+                  FilteringTextInputFormatter.digitsOnly
+                ],
+                decoration: InputDecoration(
+                  focusColor: defaultColor,
+                  labelStyle:
+                      GoogleFonts.rubik(textStyle: TextStyle(color: darkGray)),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      width: 1.0,
+                      color: gray,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(
+                      width: 1.5,
+                      color: defaultColor,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              height: 58,
+              width: 44,
+              child: TextField(
+                onChanged: (s) {
+                  if (s.length == 1) {
+                    FocusScope.of(context).nextFocus();
+                  }
+                },
+                cursorColor: defaultColor,
+                keyboardType: TextInputType.number,
+                textAlign: TextAlign.center,
+                inputFormatters: [
+                  LengthLimitingTextInputFormatter(1),
+                  FilteringTextInputFormatter.digitsOnly
+                ],
+                decoration: InputDecoration(
+                  focusColor: defaultColor,
+                  labelStyle:
+                      GoogleFonts.rubik(textStyle: TextStyle(color: darkGray)),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      width: 1.0,
+                      color: gray,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide(
+                      width: 1.5,
+                      color: defaultColor,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              height: 58,
+              width: 44,
               child: TextField(
                 cursorColor: defaultColor,
                 keyboardType: TextInputType.number,

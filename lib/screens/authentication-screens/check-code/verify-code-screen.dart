@@ -92,7 +92,7 @@ class VerifyCodeScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: backButton(onTap: () {
-              navigateAndFinish(context, const ForgetPasswordScreen());
+              navigateAndFinish(context, ForgetPasswordScreen());
             }),
           )
         ]),

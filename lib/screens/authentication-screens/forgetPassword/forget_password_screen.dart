@@ -7,7 +7,9 @@ import '../../../shared/components/constants.dart';
 import '../login/login_screen.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
-  const ForgetPasswordScreen({super.key});
+  ForgetPasswordScreen({super.key});
+
+  var searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,23 +31,24 @@ class ForgetPasswordScreen extends StatelessWidget {
                 ),
                 Text("Reset Password",
                     style: GoogleFonts.rubik(
-                        textStyle:TextStyle(
-                        color: darkFont,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w500))),
+                        textStyle: TextStyle(
+                            color: darkFont,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w500))),
                 const SizedBox(
                   height: 2,
                 ),
                 Text("Enter you email.",
                     style: GoogleFonts.rubik(
-                        textStyle:TextStyle(
-                        color: darkGray,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400))),
+                        textStyle: TextStyle(
+                            color: darkGray,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400))),
                 Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 16.0, vertical: 8),
                     child: defaultTextField(
+                        controller: searchController,
                         labelText: "Email",
                         inputType: TextInputType.emailAddress,
                         isPassword: false)),

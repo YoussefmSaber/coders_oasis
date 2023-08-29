@@ -1,4 +1,5 @@
 import 'package:coders_oasis/screens/authentication-screens/login/login_screen.dart';
+import 'package:coders_oasis/screens/authentication-screens/signup/signup_screen.dart';
 import 'package:coders_oasis/screens/onboarding/onboarding.dart';
 import 'package:coders_oasis/shared/bloc_observer.dart';
 import 'package:coders_oasis/shared/cubit/applayout-cubit/applayout_cubit.dart';
@@ -63,30 +64,38 @@ class MyApp extends StatelessWidget {
             );
           } else {
             final currentUserId = snapshot.data;
+            return MaterialApp(
+              title: "Flutter Demo",
+              home: Scaffold(
+                body: SafeArea(
+                  child: SignupScreen(),
+                ),
+              ),
+            );
 
             // Check if the current user session is valid
-            if (currentUserId != null) {
-              return MaterialApp(
-                title: 'Flutter Demo',
-                home: AppLayout(),
-                debugShowCheckedModeBanner: false,
-                theme: ThemeData(
-                  useMaterial3: true,
-                ),
-              );
-            } else {
-              return MaterialApp(
-                title: 'Flutter Demo',
-                home: Scaffold(
-                  body: SafeArea(
-                      child: onBoarding ? LoginScreen() : OnBoardingScreen()),
-                ),
-                debugShowCheckedModeBanner: false,
-                theme: ThemeData(
-                  useMaterial3: true,
-                ),
-              );
-            }
+            // if (currentUserId != null) {
+            //   return MaterialApp(
+            //     title: 'Flutter Demo',
+            //     home: AppLayout(),
+            //     debugShowCheckedModeBanner: false,
+            //     theme: ThemeData(
+            //       useMaterial3: true,
+            //     ),
+            //   );
+            // } else {
+            //   return MaterialApp(
+            //     title: 'Flutter Demo',
+            //     home: Scaffold(
+            //       body: SafeArea(
+            //           child: onBoarding ? LoginScreen() : OnBoardingScreen()),
+            //     ),
+            //     debugShowCheckedModeBanner: false,
+            //     theme: ThemeData(
+            //       useMaterial3: true,
+            //     ),
+            //   );
+            // }
           }
         },
       ),

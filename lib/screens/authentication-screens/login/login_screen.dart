@@ -4,6 +4,7 @@ import 'package:coders_oasis/shared/components/components.dart';
 import 'package:coders_oasis/shared/components/constants.dart';
 import 'package:coders_oasis/shared/network/local/cahce_helper.dart';
 import 'package:coders_oasis/shared/network/remote/google-signin.dart';
+import 'package:coders_oasis/shared/network/remote/supabase_api.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -11,6 +12,9 @@ import '../signup/signup_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
+
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +86,7 @@ class LoginScreen extends StatelessWidget {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
                     child: defaultTextField(
+                      controller: emailController,
                         labelText: "Email",
                         inputType: TextInputType.emailAddress,
                         isPassword: false)),
@@ -89,6 +94,7 @@ class LoginScreen extends StatelessWidget {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
                     child: defaultTextField(
+                      controller: passwordController,
                         labelText: "Password",
                         inputType: TextInputType.emailAddress,
                         isPassword: true)),
@@ -102,7 +108,7 @@ class LoginScreen extends StatelessWidget {
                         return null;
                       })),
                   onPressed: () {
-                    navigateTo(context, const ForgetPasswordScreen());
+                    navigateTo(context, ForgetPasswordScreen());
                   },
                   child: Text("Forgot Password?",
                       style: GoogleFonts.rubik(
@@ -116,7 +122,11 @@ class LoginScreen extends StatelessWidget {
                       const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
                   child: defaultButton(
                       text: "Log in",
-                      onTap: () {},
+                      onTap: () async {
+                        var supabaseService = SupabaseService();
+                        var variable = await supabaseService.login(email: emailController.text, password: passwordController.text);
+                        print("'Login page:--' \n ${variable.user?.email}");
+                      },
                       textColor: "ffffff",
                       buttonWidth: double.infinity),
                 ),

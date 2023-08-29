@@ -62,4 +62,31 @@ class SupabaseService {
         .toList();
     return videos;
   }
+
+  Future<AuthResponse> signup({
+    required String email,
+    required String password,
+    required String username
+}) async {
+    final AuthResponse res = await supabase.auth.signUp(
+      email: email,
+      password: password,
+      data: {'username': username},
+    );
+
+    final Session? session = res.session;
+    final User? user = res.user;
+    print("'supabase_api:--' \n\n user Data: ${user?.userMetadata}");
+    print("'supabase_api:--' \n\n Session Data: ${session?.user.userMetadata}");
+    return res;
+  }
+
+  Future<AuthResponse> login({
+    required String email,
+    required String password
+}) async {
+    final AuthResponse res = await supabase.auth.signInWithPassword(password: password, email: email);
+
+    return res;
+  }
 }

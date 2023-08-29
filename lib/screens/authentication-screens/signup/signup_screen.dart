@@ -1,5 +1,7 @@
+import 'package:coders_oasis/shared/network/remote/supabase_api.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 
 import '../../../shared/components/components.dart';
 import '../../../shared/components/constants.dart';
@@ -10,6 +12,13 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String email;
+    final String password;
+    final String userName;
+    var emailController = TextEditingController();
+    var passwordController = TextEditingController();
+    var userNameController = TextEditingController();
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -24,17 +33,18 @@ class SignupScreen extends StatelessWidget {
                     height: 150,
                   ),
                   const Image(
-                      image: AssetImage("assets/images/images/signup-image.png")),
+                      image:
+                      AssetImage("assets/images/images/signup-image.png")),
                   const SizedBox(
                     height: 16,
                   ),
                   Text(
                     "Sign up",
                     style: GoogleFonts.rubik(
-                      textStyle:TextStyle(
-                        color: darkFont,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w500)),
+                        textStyle: TextStyle(
+                            color: darkFont,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w500)),
                   ),
                   const SizedBox(
                     height: 2,
@@ -42,10 +52,10 @@ class SignupScreen extends StatelessWidget {
                   Text(
                     "Create your account",
                     style: GoogleFonts.rubik(
-                      textStyle:TextStyle(
-                        color: darkGray,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400)),
+                        textStyle: TextStyle(
+                            color: darkGray,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w400)),
                   ),
                   const SizedBox(
                     height: 8,
@@ -54,6 +64,7 @@ class SignupScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 16.0, vertical: 8),
                       child: defaultTextField(
+                          controller: userNameController,
                           labelText: "Name",
                           inputType: TextInputType.text,
                           isPassword: false)),
@@ -61,6 +72,7 @@ class SignupScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 16.0, vertical: 8),
                       child: defaultTextField(
+                          controller: emailController,
                           labelText: "Email",
                           inputType: TextInputType.emailAddress,
                           isPassword: false)),
@@ -68,22 +80,30 @@ class SignupScreen extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 16.0, vertical: 8),
                       child: defaultTextField(
+                          controller: passwordController,
                           labelText: "Password",
                           inputType: TextInputType.emailAddress,
                           isPassword: true)),
                   Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 8.0, horizontal: 16),
                     child: defaultButton(
                         text: "Sign up",
-                        onTap: () {},
+                        onTap: () async{
+                          var supabaseService = SupabaseService();
+                          var variable = await supabaseService.signup(email: emailController.text,
+                              password: passwordController.text,
+                              username: userNameController.text);
+                          print("'signup screen:--' \n\n ${variable.user?.userMetadata}");
+                        },
                         textColor: "ffffff",
                         buttonWidth: double.infinity),
                   ),
                   TextButton(
                     style: ButtonStyle(
                         splashFactory: InkSplash.splashFactory,
-                        overlayColor: MaterialStateProperty.resolveWith((state) {
+                        overlayColor:
+                        MaterialStateProperty.resolveWith((state) {
                           if (state.contains(MaterialState.pressed)) {
                             return secondaryColorTransparent;
                           }
@@ -92,11 +112,11 @@ class SignupScreen extends StatelessWidget {
                       navigateAndFinish(context, LoginScreen());
                     },
                     child: Text("Login",
-                        style:GoogleFonts.rubik(
+                        style: GoogleFonts.rubik(
                             textStyle: TextStyle(
-                            color: darkGray,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500))),
+                                color: darkGray,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500))),
                   ),
                   const SizedBox(
                     height: 40,
