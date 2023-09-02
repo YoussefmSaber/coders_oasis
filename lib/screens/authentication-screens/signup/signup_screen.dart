@@ -1,5 +1,7 @@
+import 'package:coders_oasis/screens/authentication-screens/verify-email/verify_email.dart';
 import 'package:coders_oasis/shared/network/remote/supabase_api.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 
@@ -12,9 +14,6 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String email;
-    final String password;
-    final String userName;
     var emailController = TextEditingController();
     var passwordController = TextEditingController();
     var userNameController = TextEditingController();
@@ -34,7 +33,7 @@ class SignupScreen extends StatelessWidget {
                   ),
                   const Image(
                       image:
-                      AssetImage("assets/images/images/signup-image.png")),
+                          AssetImage("assets/images/images/signup-image.png")),
                   const SizedBox(
                     height: 16,
                   ),
@@ -89,12 +88,27 @@ class SignupScreen extends StatelessWidget {
                         vertical: 8.0, horizontal: 16),
                     child: defaultButton(
                         text: "Sign up",
-                        onTap: () async{
-                          var supabaseService = SupabaseService();
-                          var variable = await supabaseService.signup(email: emailController.text,
-                              password: passwordController.text,
-                              username: userNameController.text);
-                          print("'signup screen:--' \n\n ${variable.user?.userMetadata}");
+                        onTap: () async {
+                          try {
+                            var supabaseService = SupabaseService();
+
+                            var variable = await supabaseService.signup(
+                                email: emailController.text,
+                                password: passwordController.text,
+                                username: userNameController.text);
+                            if (variable.user?.identities?.isEmpty == true) {
+                              Fluttertoast.showToast(
+                                  msg: "The email is already used",
+                                  gravity: ToastGravity.BOTTOM,
+                                  backgroundColor: errorColor,
+                                  textColor: Colors.white);
+                            } else {
+                              navigateTo(context, VerifyEmailScreen());
+                              print("'signup screen:--' \n\n ${variable.user}");
+                            }
+                          } catch (error) {
+                            print("Error: $error");
+                          }
                         },
                         textColor: "ffffff",
                         buttonWidth: double.infinity),
@@ -103,7 +117,7 @@ class SignupScreen extends StatelessWidget {
                     style: ButtonStyle(
                         splashFactory: InkSplash.splashFactory,
                         overlayColor:
-                        MaterialStateProperty.resolveWith((state) {
+                            MaterialStateProperty.resolveWith((state) {
                           if (state.contains(MaterialState.pressed)) {
                             return secondaryColorTransparent;
                           }

@@ -145,6 +145,9 @@ Widget defaultTextField(
       obscureText: isPassword,
       cursorColor: defaultColor,
       decoration: InputDecoration(
+        floatingLabelStyle: TextStyle(
+          color: defaultColor
+        ),
         focusColor: defaultColor,
         labelText: labelText,
         labelStyle: GoogleFonts.rubik(textStyle: TextStyle(color: darkGray)),

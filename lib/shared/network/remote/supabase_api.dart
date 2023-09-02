@@ -76,8 +76,6 @@ class SupabaseService {
 
     final Session? session = res.session;
     final User? user = res.user;
-    print("'supabase_api:--' \n\n user Data: ${user?.userMetadata}");
-    print("'supabase_api:--' \n\n Session Data: ${session?.user.userMetadata}");
     return res;
   }
 
@@ -89,4 +87,16 @@ class SupabaseService {
 
     return res;
   }
+
+  Future<bool> isEmailAlreadyUsed(String email) async {
+    final response = await supabase
+        .from('auth.users')
+        .select()
+        .eq('email', email)
+        .single();
+
+    // If a user with the given email exists, response.data will not be null
+    return response.data != null;
+  }
+
 }
