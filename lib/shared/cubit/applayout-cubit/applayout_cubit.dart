@@ -7,40 +7,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppLayoutCubit extends Cubit<AppLayoutStates> {
-
-  late final String name;
-  late final String email;
-  late List<Widget> appScreens;
-
-  late final Future<void> appScreensInitialized;
-
-  AppLayoutCubit() : super(AppLayoutInitialState()) {
-    appScreensInitialized = _initializeUserInfo();
-  }
-
-  Future<void> _initializeUserInfo() async {
-    name = await CacheHelper.getData(key: "displayName");
-    email = await CacheHelper.getData(key: "userEmail");
-
-    appScreens = [
-      CoursesScreen(),
-      ProfileScreen(userName: name, userEmail: email),
-      const SettingsScreen()
-    ];
-  }
-
+  AppLayoutCubit() : super(AppLayoutInitialState());
+  List<Widget> appScreens = [
+    CoursesScreen(),
+    ProfileScreen(),
+    const SettingsScreen()
+  ];
 
   List<BottomNavigationBarItem> bottomNavigationItems = const [
     BottomNavigationBarItem(
       icon: Icon(Icons.class_rounded),
       label: "Courses",
     ),
+    BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
     BottomNavigationBarItem(
-        icon: Icon(Icons.person),
-        label: "Profile"),
-    BottomNavigationBarItem(
-        icon: Icon(Icons.settings_rounded),
-        label: "Settings")
+        icon: Icon(Icons.settings_rounded), label: "Settings")
   ];
 
   static AppLayoutCubit get(context) => BlocProvider.of(context);

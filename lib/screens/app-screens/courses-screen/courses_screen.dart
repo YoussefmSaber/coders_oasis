@@ -84,44 +84,49 @@ class CoursesScreen extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              FutureBuilder<List<Course>>(
-                  future: cubit.coursesFuture,
-                  builder: (context, snapshot) {
-                    return ConditionalBuilder(
-                      condition:
-                          snapshot.connectionState == ConnectionState.waiting,
-                      builder: (context) => Expanded(
-                          child: Column(children: [
-                        const Spacer(),
-                        CircularProgressIndicator(
-                          color: defaultColor,
-                        ),
-                        const Spacer()
-                      ])),
-                      fallback: (context) {
-                        if (snapshot.hasError) {
-                          return Text('Error: ${snapshot.error}');
-                        } else if (!snapshot.hasData ||
-                            snapshot.data!.isEmpty) {
-                          return Text('No courses found.');
-                        } else {
-                          return Expanded(
-                              child: ListView.separated(
-                            itemCount: snapshot.data!.length,
-                            physics: const BouncingScrollPhysics(
-                              decelerationRate: ScrollDecelerationRate.normal,
+              Expanded(
+                child: RefreshIndicator(
+                  backgroundColor: Colors.white,
+                  color: defaultColor,
+                  onRefresh: () async {
+                    // Use await here if SupabaseService().getAllCourses() is asynchronous
+                    await SupabaseService().getAllCourses();
+                  },
+                  child: FutureBuilder<List<Course>>(
+                    future: cubit.coursesFuture,
+                    builder: (context, snapshot) {
+                      return ConditionalBuilder(
+                        condition: snapshot.connectionState == ConnectionState.waiting,
+                        builder: (context) => Column(
+                          children: [
+                            const Spacer(),
+                            CircularProgressIndicator(
+                              color: defaultColor,
                             ),
-                            itemBuilder: (context, index) {
-                              final course = snapshot.data![index];
-                              return OpenContainer(
+                            const Spacer()
+                          ],
+                        ),
+                        fallback: (context) {
+                          if (snapshot.hasError) {
+                            return Text('Error: ${snapshot.error}');
+                          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                            return Text('No courses found.');
+                          } else {
+                            return ListView.separated(
+                              itemCount: snapshot.data!.length,
+                              physics: const BouncingScrollPhysics(
+                                decelerationRate: ScrollDecelerationRate.normal,
+                              ),
+                              itemBuilder: (context, index) {
+                                final course = snapshot.data![index];
+                                return OpenContainer(
                                   openElevation: 0,
                                   closedElevation: 0,
                                   closedShape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(16)),
-                                  transitionDuration:
-                                      const Duration(milliseconds: 450),
-                                  transitionType:
-                                      ContainerTransitionType.fadeThrough,
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
+                                  transitionDuration: const Duration(milliseconds: 450),
+                                  transitionType: ContainerTransitionType.fadeThrough,
                                   closedBuilder: (context, action) {
                                     return courseItem(
                                       course: course,
@@ -130,17 +135,19 @@ class CoursesScreen extends StatelessWidget {
                                   },
                                   openBuilder: (context, action) {
                                     return CourseDetailsScreen(course: course);
-                                  });
-                            },
-                            separatorBuilder:
-                                (BuildContext context, int index) => SizedBox(
-                              height: 8,
-                            ),
-                          ));
-                        }
-                      },
-                    );
-                  })
+                                  },
+                                );
+                              },
+                              separatorBuilder: (BuildContext context, int index) =>
+                                  SizedBox(height: 8),
+                            );
+                          }
+                        },
+                      );
+                    },
+                  ),
+                ),
+              )
             ],
           ),
         ),

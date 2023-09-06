@@ -25,24 +25,8 @@ class AppLayout extends StatelessWidget {
             onTap: (index) => cubit.changeIndex(index),
           ),
           body: SafeArea(
-            child: FutureBuilder(
-              // Wait for appScreens to be initialized
-              future: cubit.appScreensInitialized,
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                } else if (snapshot.hasError) {
-                  return Center(
-                    child: Text('Error: ${snapshot.error}'),
-                  );
-                } else {
-                  return cubit.appScreens[cubit.currentIndex];
-                }
-              },
+            child:cubit.appScreens[cubit.currentIndex]
             ),
-          ),
         );
       },
     );

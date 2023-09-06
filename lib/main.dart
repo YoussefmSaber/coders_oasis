@@ -6,6 +6,7 @@ import 'package:coders_oasis/shared/bloc_observer.dart';
 import 'package:coders_oasis/shared/cubit/applayout-cubit/applayout_cubit.dart';
 import 'package:coders_oasis/shared/cubit/courses-screen-cubit/courses_cubit.dart';
 import 'package:coders_oasis/shared/cubit/onboarding_cubit/onboarding_cubit.dart';
+import 'package:coders_oasis/shared/cubit/profile-cubit/profile_cubit.dart';
 import 'package:coders_oasis/shared/cubit/settings-cubit/settings_cubit.dart';
 import 'package:coders_oasis/shared/network/local/cahce_helper.dart';
 import 'package:coders_oasis/shared/network/remote/api-keys.dart';
@@ -43,7 +44,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => OnBoardingCubit()),
         BlocProvider(create: (context) => AppLayoutCubit()),
         BlocProvider(create: (context) => SettingsCubit()),
-        BlocProvider(create: (context) => CoursesScreenCubit())
+        BlocProvider(create: (context) => CoursesScreenCubit()),
+        BlocProvider(create: (context) => ProfileCubit())
       ],
       child: FutureBuilder<String?>(
         future: SupabaseService().currentUserId(),

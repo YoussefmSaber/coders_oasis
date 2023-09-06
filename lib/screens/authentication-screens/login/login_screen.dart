@@ -83,18 +83,18 @@ class LoginScreen extends StatelessWidget {
                   height: 8,
                 ),
                 Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 8),
                     child: defaultTextField(
-                      controller: emailController,
+                        controller: emailController,
                         labelText: "Email",
                         inputType: TextInputType.emailAddress,
                         isPassword: false)),
                 Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 8),
                     child: defaultTextField(
-                      controller: passwordController,
+                        controller: passwordController,
                         labelText: "Password",
                         inputType: TextInputType.emailAddress,
                         isPassword: true)),
@@ -122,10 +122,11 @@ class LoginScreen extends StatelessWidget {
                       const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
                   child: defaultButton(
                       text: "Log in",
-                      onTap: () async {
-                        var supabaseService = SupabaseService();
-                        var variable = await supabaseService.login(email: emailController.text, password: passwordController.text);
-                        print("'Login page:--' \n ${variable.user?.email}");
+                      onTap: () {
+                        loginNormal(
+                            context,
+                            emailController.text,
+                            passwordController.text);
                       },
                       textColor: "ffffff",
                       buttonWidth: double.infinity),
@@ -161,7 +162,19 @@ class LoginScreen extends StatelessWidget {
     final user = await GoogleSignInApi.login();
     CacheHelper.saveData(key: "displayName", value: user?.displayName);
     CacheHelper.saveData(key: "userEmail", value: user?.email);
+    CacheHelper.saveData(key: "userId", value: user?.id);
     navigateAndFinish(context, AppLayout());
     print(user.toString());
+  }
+
+  Future loginNormal(context, String email, String password) async {
+    var supabaseService = SupabaseService();
+    var variable =
+        await supabaseService.login(email: email, password: password);
+    print("'Login page:--' \n ${variable.user?.email}");
+
+    if (variable.user != null) {
+      navigateAndFinish(context, AppLayout());
+    }
   }
 }
