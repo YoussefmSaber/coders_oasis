@@ -69,7 +69,7 @@ class ProfileScreen extends StatelessWidget {
                       }),
                 ),
                 const SizedBox(
-                  height: 16,
+                  height: 8,
                 ),
                 Align(
                   alignment: Alignment.bottomLeft,
@@ -89,23 +89,22 @@ class ProfileScreen extends StatelessWidget {
                 FutureBuilder<UserModel>(
                     future: cubit.userData,
                     builder: (_, snapshot) {
-                      return Expanded(
-                        child: Column(
-                          children: [
-                            settingsItem(
-                                label: "Name",
-                                itemIcon: Icons.person,
-                                subLabel: "${snapshot.data?.name.toString()}"),
-                            settingsItem(
-                                label: "Email",
-                                itemIcon: Icons.email_rounded,
-                                subLabel: "${snapshot.data?.email.toString()}"),
-                            settingsItem(
-                                label: "Password",
-                                itemIcon: Icons.lock_rounded,
-                                subLabel: "Changed 2 weeks ago"),
-                          ],
-                        ),
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          settingsItem(
+                              label: "Name",
+                              itemIcon: Icons.person,
+                              subLabel: "${snapshot.data?.name.toString()}"),
+                          settingsItem(
+                              label: "Email",
+                              itemIcon: Icons.email_rounded,
+                              subLabel: "${snapshot.data?.email.toString()}"),
+                          settingsItem(
+                              label: "Password",
+                              itemIcon: Icons.lock_rounded,
+                              subLabel: "Changed 2 weeks ago"),
+                        ],
                       );
                     }),
                 TextButton(
@@ -128,7 +127,7 @@ class ProfileScreen extends StatelessWidget {
                     child: Text(
                       "Log out",
                       style: GoogleFonts.rubik(color: errorColor, fontSize: 14),
-                    ))
+                    )),
               ],
             ),
             Padding(

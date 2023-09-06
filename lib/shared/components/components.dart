@@ -452,16 +452,19 @@ Widget settingsItem(
                               color: darkFont,
                               fontWeight: FontWeight.w500))),
                 ),
-                Text(
-                  subLabel,
-                  style: GoogleFonts.rubik(
-                      textStyle: TextStyle(
-                          letterSpacing: -0.50,
-                          fontSize: 16,
-                          color: darkGray,
-                          fontWeight: FontWeight.w400)),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
+                SizedBox(
+                  width: 220,
+                  child: Text(
+                    subLabel,
+                    style: GoogleFonts.rubik(
+                        textStyle: TextStyle(
+                            letterSpacing: -0.50,
+                            fontSize: 16,
+                            color: darkGray,
+                            fontWeight: FontWeight.w400)),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
                 ),
               ],
             ),

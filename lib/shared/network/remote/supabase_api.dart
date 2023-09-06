@@ -1,3 +1,4 @@
+import 'package:coders_oasis/shared/network/local/cahce_helper.dart';
 import 'package:coders_oasis/shared/network/remote/google-signin.dart';
 import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 import 'package:coders_oasis/models/course_model.dart';
@@ -38,6 +39,7 @@ class SupabaseService {
   }
 
   Future<void> signout() async {
+    await CacheHelper.clearCache();
     return await supabase.auth.signOut();
   }
 
