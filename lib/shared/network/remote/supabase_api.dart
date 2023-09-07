@@ -65,11 +65,10 @@ class SupabaseService {
     return videos;
   }
 
-  Future<AuthResponse> signup({
-    required String email,
-    required String password,
-    required String username
-}) async {
+  Future<AuthResponse> signup(
+      {required String email,
+      required String password,
+      required String username}) async {
     final AuthResponse res = await supabase.auth.signUp(
       email: email,
       password: password,
@@ -81,24 +80,41 @@ class SupabaseService {
     return res;
   }
 
-  Future<AuthResponse> login({
-    required String email,
-    required String password
-}) async {
-    final AuthResponse res = await supabase.auth.signInWithPassword(password: password, email: email);
+  Future<AuthResponse> login(
+      {required String email, required String password}) async {
+    final AuthResponse res = await supabase.auth
+        .signInWithPassword(password: password, email: email);
 
     return res;
   }
 
   Future<bool> isEmailAlreadyUsed(String email) async {
-    final response = await supabase
-        .from('auth.users')
-        .select()
-        .eq('email', email)
-        .single();
+    final response =
+        await supabase.from('auth.users').select().eq('email', email).single();
 
     // If a user with the given email exists, response.data will not be null
     return response.data != null;
   }
 
+  void addCourseToUser(String userId, String courseId) async {
+    print("$userId, $courseId");
+
+      await supabase
+           .from("enrolled_courses")
+           .insert({'user_id': userId, 'course_id': courseId});
+      print("added the course to the user");
+  }
+
+  Future<bool> isCourseEnrolled(String userId, String courseId) async {
+    List<dynamic> isEnrolled = await supabase
+        .from('enrolled_courses')
+        .select("id")
+        .eq('user_id', userId)
+        .eq('course_id', courseId);
+    if (isEnrolled.isEmpty) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 }

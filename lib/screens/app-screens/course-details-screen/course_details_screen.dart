@@ -1,4 +1,5 @@
 import 'package:coders_oasis/shared/components/components.dart';
+import 'package:coders_oasis/shared/network/remote/supabase_api.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -12,6 +13,15 @@ class CourseDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var supabaseService = SupabaseService();
+    String userId = "";
+    var _userId = supabaseService.currentUserId();
+    _userId.then((value) {
+      if (value != null) {
+        userId = value;
+      }
+    });
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -104,11 +114,37 @@ class CourseDetailsScreen extends StatelessWidget {
                     ),
                   ),
                   const Spacer(),
-                  defaultButton(
-                      text: "Add to cart",
-                      onTap: () {},
-                      textColor: "ffffff",
-                      buttonWidth: double.infinity)
+                  FutureBuilder<bool>(
+                    future: supabaseService.isCourseEnrolled(userId, course.id),
+                    builder: (_, snapshot) {
+                      if (snapshot.data == true) {
+                        return defaultButton(
+                            text: "Continue to the course",
+                            onTap: () {
+                              print("nothing happens");
+                            },
+                            textColor: "ffffff",
+                            buttonWidth: double.infinity);
+                      } else if (snapshot.data == false) {
+                        return defaultButton(
+                            text: "Add to library",
+                            onTap: () {
+                              print("add happens");
+                              // supabaseService.addCourseToUser(userId, course.id);
+                            },
+                            textColor: "ffffff",
+                            buttonWidth: double.infinity);
+                      } else {
+                        return defaultButton(
+                            text: "",
+                            onTap: () {
+                              print("null happens");
+                            },
+                            textColor: "ffffff",
+                            buttonWidth: double.infinity);
+                      }
+                    },
+                  )
                 ],
               ),
             ),
