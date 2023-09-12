@@ -99,22 +99,28 @@ class SupabaseService {
   void addCourseToUser(String userId, String courseId) async {
     print("$userId, $courseId");
 
-      await supabase
-           .from("enrolled_courses")
-           .insert({'user_id': userId, 'course_id': courseId});
-      print("added the course to the user");
+    await supabase
+        .from("enrolled_courses")
+        .insert({'user_id': userId, 'course_id': courseId});
+    print("added the course to the user");
   }
 
   Future<bool> isCourseEnrolled(String userId, String courseId) async {
-    List<dynamic> isEnrolled = await supabase
-        .from('enrolled_courses')
-        .select("id")
-        .eq('user_id', userId)
-        .eq('course_id', courseId);
-    if (isEnrolled.isEmpty) {
-      return false;
-    } else {
-      return true;
+    try {
+      final List<dynamic>response = await supabase
+          .from('enrolled_courses')
+          .select("id")
+          .eq('user_id', userId)
+          .eq('course_id', courseId);
+
+      if (response.runtimeType == null || response.isEmpty) {
+        return false;
+      } else {
+        return true;
+      }
+    } catch (error) {
+      print("Error in isCourseEnrolled: $error");
+      return false; // Handle the error here as well.
     }
   }
 }
