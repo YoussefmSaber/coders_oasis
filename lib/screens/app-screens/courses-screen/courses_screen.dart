@@ -15,7 +15,6 @@ import '../course-details-screen/course_details_screen.dart';
 class CoursesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var userName = CacheHelper.getData(key: "displayName");
     return BlocConsumer<CoursesScreenCubit, CoursesScreenStates>(
       listener: (context, state) {},
       builder: (context, state) {

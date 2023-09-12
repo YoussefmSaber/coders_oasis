@@ -55,6 +55,34 @@ class SupabaseService {
     return courseList;
   }
 
+  Future<List<Course>> getUserCourses(String userId) async {
+    final List<dynamic> coursesData = await supabase
+        .from('enrolled_courses')
+        .select("course_id")
+        .eq("user_id", userId);
+
+    List<String> coursesId = coursesData
+        .map((courseId) => courseId["course_id"].toString())
+        .toList();
+    print(coursesId);
+    List<Course> courses = [];
+
+    for (var courseId in coursesId) {
+      final courseResponse = await supabase
+          .from("courses")
+          .select("*")
+          .eq("id", courseId);
+      final courseList = (courseResponse as List<dynamic>);
+      if (courseList.isNotEmpty) {
+        final course = Course.fromJson(courseList.first);
+        courses.add(course);
+        print(course.toString());
+      }
+    }
+    print(courses.toString());
+    return courses;
+  }
+
   Future<List<Video>> getCourseVideos({required String courseId}) async {
     final response =
         await supabase.from('videos').select('*').eq('course_id', courseId);
@@ -107,7 +135,7 @@ class SupabaseService {
 
   Future<bool> isCourseEnrolled(String userId, String courseId) async {
     try {
-      final List<dynamic>response = await supabase
+      final List<dynamic> response = await supabase
           .from('enrolled_courses')
           .select("id")
           .eq('user_id', userId)
