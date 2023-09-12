@@ -4,6 +4,7 @@ import 'package:coders_oasis/screens/authentication-screens/verify-email/verify_
 import 'package:coders_oasis/screens/onboarding/onboarding.dart';
 import 'package:coders_oasis/shared/bloc_observer.dart';
 import 'package:coders_oasis/shared/cubit/applayout-cubit/applayout_cubit.dart';
+import 'package:coders_oasis/shared/cubit/course-details-cubit/course_details_cubit.dart';
 import 'package:coders_oasis/shared/cubit/courses-screen-cubit/courses_cubit.dart';
 import 'package:coders_oasis/shared/cubit/onboarding_cubit/onboarding_cubit.dart';
 import 'package:coders_oasis/shared/cubit/profile-cubit/profile_cubit.dart';
@@ -45,7 +46,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => AppLayoutCubit()),
         BlocProvider(create: (context) => SettingsCubit()),
         BlocProvider(create: (context) => CoursesScreenCubit()),
-        BlocProvider(create: (context) => ProfileCubit())
+        BlocProvider(create: (context) => ProfileCubit()),
+        BlocProvider(create: (context) => CourseDetailsCubit())
       ],
       child: FutureBuilder<String?>(
         future: SupabaseService().currentUserId(),

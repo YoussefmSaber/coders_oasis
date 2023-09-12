@@ -99,7 +99,7 @@ class SupabaseService {
   void addCourseToUser(String userId, String courseId) async {
     print("$userId, $courseId");
 
-    await supabase
+    var asd = await supabase
         .from("enrolled_courses")
         .insert({'user_id': userId, 'course_id': courseId});
     print("added the course to the user");
