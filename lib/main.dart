@@ -84,6 +84,7 @@ class MyApp extends StatelessWidget {
               );
             } else {
               return MaterialApp(
+
                 title: 'Coders\' Oasis',
                 home: Scaffold(
                   body: SafeArea(
