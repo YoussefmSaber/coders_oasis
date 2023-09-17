@@ -6,7 +6,6 @@ import 'package:conditional_builder_null_safety/conditional_builder_null_safety.
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 
 import '../../../models/course_model.dart';
 import '../../../shared/components/components.dart';

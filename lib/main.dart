@@ -1,3 +1,4 @@
+import 'package:coders_oasis/screens/app-screens/course-videos-screeen/course_videos.dart';
 import 'package:coders_oasis/screens/authentication-screens/login/login_screen.dart';
 import 'package:coders_oasis/screens/authentication-screens/signup/signup_screen.dart';
 import 'package:coders_oasis/screens/authentication-screens/verify-email/verify_email.dart';
@@ -59,7 +60,7 @@ class MyApp extends StatelessWidget {
           } else if (snapshot.hasError) {
             // Handle error if necessary
             return MaterialApp(
-              title: 'Flutter Demo',
+              title: 'Coders\' Oasis' ,
               home: Scaffold(
                 body: SafeArea(child: Text('An error occurred')),
               ),
@@ -74,8 +75,8 @@ class MyApp extends StatelessWidget {
             // Check if the current user session is valid
             if (currentUserId != null) {
               return MaterialApp(
-                title: 'Flutter Demo',
-                home: AppLayout(),
+                title: 'Coders\' Oasis',
+                home: CourseVideosScreen(),
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(
                   useMaterial3: true,
@@ -83,7 +84,7 @@ class MyApp extends StatelessWidget {
               );
             } else {
               return MaterialApp(
-                title: 'Flutter Demo',
+                title: 'Coders\' Oasis',
                 home: Scaffold(
                   body: SafeArea(
                       child: onBoarding ? LoginScreen() : OnBoardingScreen()),
