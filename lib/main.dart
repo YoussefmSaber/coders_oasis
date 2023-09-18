@@ -2,6 +2,7 @@ import 'package:coders_oasis/screens/app-screens/course-videos-screen/course_vid
 import 'package:coders_oasis/screens/authentication-screens/login/login_screen.dart';
 import 'package:coders_oasis/screens/onboarding/onboarding.dart';
 import 'package:coders_oasis/shared/bloc_observer.dart';
+import 'package:coders_oasis/shared/components/shimmer_components.dart';
 import 'package:coders_oasis/shared/cubit/applayout-cubit/applayout_cubit.dart';
 import 'package:coders_oasis/shared/cubit/course-details-cubit/course_details_cubit.dart';
 import 'package:coders_oasis/shared/cubit/courses-screen-cubit/courses_cubit.dart';
