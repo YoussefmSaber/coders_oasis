@@ -34,7 +34,7 @@ class VideoPlayer extends StatelessWidget {
       );
 
       // Hide The status bar.
-      SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
       // Set the screen orientation to landscape.
       SystemChrome.setPreferredOrientations([
         DeviceOrientation.landscapeLeft,
@@ -53,12 +53,15 @@ class VideoPlayer extends StatelessWidget {
                   showVideoProgressIndicator: true,
                   progressColors: ProgressBarColors(playedColor: defaultColor),
                   onEnded: (_) {
+                    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+                    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
                     Navigator.pop(context);
                   },
                 ),
               ),
             ),
             backButton(onTap: () {
+              SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
               SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
               Navigator.pop(context);
             })

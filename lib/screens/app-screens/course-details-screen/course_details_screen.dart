@@ -1,4 +1,5 @@
 import 'package:coders_oasis/screens/app-screens/course-added/course_added_screen.dart';
+import 'package:coders_oasis/screens/app-screens/course-videos-screen/course_videos.dart';
 import 'package:coders_oasis/shared/components/components.dart';
 import 'package:coders_oasis/shared/cubit/course-details-cubit/course_details_cubit.dart';
 import 'package:coders_oasis/shared/cubit/course-details-cubit/course_details_states.dart';
@@ -151,7 +152,9 @@ class CourseDetailsScreen extends StatelessWidget {
                                       if (snapshot.data == true) {
                                         return defaultButton(
                                             text: "Continue to the course",
-                                            onTap: () {},
+                                            onTap: () {
+                                              navigateTo(context, CourseVideosScreen(course: course));
+                                            },
                                             textColor: "ffffff",
                                             buttonWidth: double.infinity);
                                       } else if (snapshot.data == false) {

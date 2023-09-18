@@ -13,6 +13,7 @@ import 'package:coders_oasis/shared/network/local/cahce_helper.dart';
 import 'package:coders_oasis/shared/network/remote/api-keys.dart';
 import 'package:coders_oasis/shared/network/remote/supabase_api.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -40,6 +41,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Colors.black, // Change this color to the desired one
+      ),
+    );
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => OnBoardingCubit()),
@@ -74,7 +80,7 @@ class MyApp extends StatelessWidget {
             if (currentUserId != null) {
               return MaterialApp(
                 title: 'Coders\' Oasis',
-                home: CourseVideosScreen(),
+                home: AppLayout(),
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(
                   useMaterial3: true,
