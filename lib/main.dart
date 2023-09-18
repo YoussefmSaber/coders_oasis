@@ -1,7 +1,5 @@
-import 'package:coders_oasis/screens/app-screens/course-videos-screeen/course_videos.dart';
+import 'package:coders_oasis/screens/app-screens/course-videos-screen/course_videos.dart';
 import 'package:coders_oasis/screens/authentication-screens/login/login_screen.dart';
-import 'package:coders_oasis/screens/authentication-screens/signup/signup_screen.dart';
-import 'package:coders_oasis/screens/authentication-screens/verify-email/verify_email.dart';
 import 'package:coders_oasis/screens/onboarding/onboarding.dart';
 import 'package:coders_oasis/shared/bloc_observer.dart';
 import 'package:coders_oasis/shared/cubit/applayout-cubit/applayout_cubit.dart';
@@ -35,7 +33,7 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   final bool onBoarding;
 
-  MyApp(
+  const MyApp(
     this.onBoarding, {
     Key? key,
   }) : super(key: key);
@@ -56,12 +54,12 @@ class MyApp extends StatelessWidget {
         future: SupabaseService().currentUserId(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           } else if (snapshot.hasError) {
             // Handle error if necessary
             return MaterialApp(
               title: 'Coders\' Oasis' ,
-              home: Scaffold(
+              home: const Scaffold(
                 body: SafeArea(child: Text('An error occurred')),
               ),
               debugShowCheckedModeBanner: false,
@@ -84,7 +82,6 @@ class MyApp extends StatelessWidget {
               );
             } else {
               return MaterialApp(
-
                 title: 'Coders\' Oasis',
                 home: Scaffold(
                   body: SafeArea(

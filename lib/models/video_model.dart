@@ -6,7 +6,7 @@ class Video{
   late String videoUrl;
   late String videoName;
   late String creator;
-  late String videoNum;
+  late int videoNum;
 
   Video.fromJson(Map<String, dynamic> json) {
     id = json['id'];

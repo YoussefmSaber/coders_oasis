@@ -7,6 +7,8 @@ Color defaultColorTransparent = const Color.fromRGBO(227, 86, 42, 0.2);
 Color secondaryColor = HexColor("65AAEA");
 Color secondaryColorTransparent = const Color.fromRGBO(101, 170, 234, 0.2);
 
+Color progressBackgroundColor = HexColor("EDDFBC");
+
 Color darkFont = HexColor("3C3A36");
 Color darkGray = HexColor("78746D");
 Color gray = HexColor("BEBAB3");

@@ -85,9 +85,9 @@ class SupabaseService {
 
   Future<List<Video>> getCourseVideos({required String courseId}) async {
     final response =
-        await supabase.from('videos').select('*').eq('course_id', courseId);
+        await supabase.from('videos').select('*').eq('course_id', courseId).order('video_num', ascending: true);
 
-    final videos = (response.data as List<dynamic>)
+    final videos = (response as List<dynamic>)
         .map((json) => Video.fromJson(json))
         .toList();
     return videos;

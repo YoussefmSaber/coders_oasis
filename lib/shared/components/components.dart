@@ -1,11 +1,14 @@
 import 'package:coders_oasis/screens/app-screens/course-details-screen/course_details_screen.dart';
+import 'package:coders_oasis/screens/app-screens/video-player-screen/video_player.dart';
 import 'package:coders_oasis/shared/components/constants.dart';
+import 'package:curved_progress_bar/curved_progress_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import '../../models/boarding_model.dart';
 import '../../models/course_model.dart';
+import '../../models/video_model.dart';
 
 Widget onBoardingItem(
   BoardingModel onBoardingItem,
@@ -113,7 +116,10 @@ Widget backButton({
         side: BorderSide(width: 1, color: darkGray),
         borderRadius: BorderRadius.circular(100),
       ),
-      child: Icon(Icons.arrow_back_ios_new_rounded, color: darkFont,),
+      child: Icon(
+        Icons.arrow_back_ios_new_rounded,
+        color: darkFont,
+      ),
     );
 
 Widget notificationButton({required Function onTap}) => FloatingActionButton(
@@ -145,9 +151,7 @@ Widget defaultTextField(
       obscureText: isPassword,
       cursorColor: defaultColor,
       decoration: InputDecoration(
-        floatingLabelStyle: TextStyle(
-          color: defaultColor
-        ),
+        floatingLabelStyle: TextStyle(color: defaultColor),
         focusColor: defaultColor,
         labelText: labelText,
         labelStyle: GoogleFonts.rubik(textStyle: TextStyle(color: darkGray)),
@@ -573,6 +577,65 @@ Widget courseItem({required Course course, required context}) => Card(
         ],
       ),
     );
+
+Widget videoItem({required Video video, required context}) => InkWell(
+  onTap: () => navigateTo(context, VideoPlayer(videoUrl: video.videoUrl)),
+  child:   Card(
+        color: Colors.white,
+        surfaceTintColor: Colors.white,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+            side: BorderSide(width: 1.2, color: gray),
+            borderRadius: BorderRadius.circular(8)),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              ClipRRect(
+                  borderRadius: BorderRadius.circular(4),
+                  child: Image.network(
+                    video.thumbnailPath,
+                    width: 120,
+                  )),
+              SizedBox(
+                width: 16,
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        video.videoName,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.rubik(
+                          textStyle: TextStyle(
+                              fontSize: 18,
+                              color: darkFont,
+                              fontWeight: FontWeight.w500),
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      CurvedLinearProgressIndicator(
+                        value: 0.98,
+                        strokeWidth: 8,
+                        backgroundColor: progressBackgroundColor,
+                        color: secondaryColor,
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+);
 
 void navigateTo(context, widget) => Navigator.push(
     context,
