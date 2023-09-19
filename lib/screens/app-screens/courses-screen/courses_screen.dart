@@ -1,6 +1,7 @@
 import 'package:animations/animations.dart';
 import 'package:coders_oasis/shared/components/components.dart';
 import 'package:coders_oasis/shared/components/constants.dart';
+import 'package:coders_oasis/shared/components/shimmer_components.dart';
 import 'package:coders_oasis/shared/cubit/courses-screen-cubit/courses_cubit.dart';
 import 'package:coders_oasis/shared/cubit/courses-screen-cubit/courses_states.dart';
 import 'package:coders_oasis/shared/network/remote/supabase_api.dart';
@@ -105,15 +106,15 @@ class CoursesScreen extends StatelessWidget {
                         return ConditionalBuilder(
                           condition: snapshot.connectionState ==
                               ConnectionState.waiting,
-                          builder: (context) => Column(
-                            children: [
-                              const Spacer(),
-                              CircularProgressIndicator(
-                                color: defaultColor,
+                          builder: (context) => ListView.separated(
+                              itemBuilder: (_, index) => courseItemShimmer(),
+                              physics: const BouncingScrollPhysics(
+                                decelerationRate: ScrollDecelerationRate.normal,
                               ),
-                              const Spacer()
-                            ],
-                          ),
+                              separatorBuilder: (_, index) => const SizedBox(
+                                    height: 8,
+                                  ),
+                              itemCount: 3),
                           fallback: (context) {
                             if (snapshot.hasError) {
                               return Text('Error: ${snapshot.error}');
