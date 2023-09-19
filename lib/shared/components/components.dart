@@ -19,7 +19,7 @@ Widget onBoardingItem(
           height: 16,
         ),
         SizedBox(
-          height: 60,
+          height: 63,
           child: Text(
             onBoardingItem.title,
             textAlign: TextAlign.center,
