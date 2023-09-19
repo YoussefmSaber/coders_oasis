@@ -1,4 +1,5 @@
 import 'package:animations/animations.dart';
+import 'package:coders_oasis/screens/app-screens/search_screen.dart';
 import 'package:coders_oasis/shared/components/components.dart';
 import 'package:coders_oasis/shared/components/constants.dart';
 import 'package:coders_oasis/shared/components/shimmer_components.dart';
@@ -88,6 +89,7 @@ class CoursesScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
+                  onTap: () => navigateTo(context, const SearchScreen()),
                 ),
                 const SizedBox(
                   height: 16,
