@@ -20,13 +20,11 @@ class SupabaseService {
     required String userIdToken,
     String? userAccessToken,
   }) async {
-    final AuthResponse res = await supabase.auth.signInWithIdToken(
+    await supabase.auth.signInWithIdToken(
       provider: provider,
       idToken: userIdToken,
       accessToken: userAccessToken,
     );
-    final Session? session = res.session;
-    final User? user = res.user;
 
     // You can store the user session and user data in variables here.
   }
@@ -61,7 +59,6 @@ class SupabaseService {
     List<String> coursesId = coursesData
         .map((courseId) => courseId["course_id"].toString())
         .toList();
-    print(coursesId);
     List<Course> courses = [];
 
     for (var courseId in coursesId) {
@@ -71,10 +68,8 @@ class SupabaseService {
       if (courseList.isNotEmpty) {
         final course = Course.fromJson(courseList.first);
         courses.add(course);
-        print(course.toString());
       }
     }
-    print(courses.toString());
     return courses;
   }
 
@@ -140,7 +135,6 @@ class SupabaseService {
         return true;
       }
     } catch (error) {
-      print("Error in isCourseEnrolled: $error");
       return false; // Handle the error here as well.
     }
   }

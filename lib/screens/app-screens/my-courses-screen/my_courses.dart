@@ -1,4 +1,5 @@
 import 'package:animations/animations.dart';
+import 'package:coders_oasis/shared/components/shimmer_components.dart';
 import 'package:coders_oasis/shared/cubit/my-courses-cubit/my_courses_cubit.dart';
 import 'package:coders_oasis/shared/cubit/my-courses-cubit/my_courses_states.dart';
 import 'package:coders_oasis/shared/network/remote/supabase_api.dart';
@@ -28,7 +29,7 @@ class MyCoursesScreen extends StatelessWidget {
               children: [
                 Padding(
                   padding:
-                  const EdgeInsets.only(top: 16.0, right: 16, left: 16),
+                      const EdgeInsets.only(top: 16.0, right: 16, left: 16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -54,72 +55,70 @@ class MyCoursesScreen extends StatelessWidget {
                       ),
                       FutureBuilder<List<Course>>(
                           future: cubit.userId.then((value) {
-                            if (value != null) {
-                              return SupabaseService().getUserCourses(value);
+                        if (value != null) {
+                          return SupabaseService().getUserCourses(value);
+                        } else {
+                          return SupabaseService().getUserCourses("");
+                        }
+                      }), builder: (context, snapshot) {
+                        return ConditionalBuilder(
+                          condition: snapshot.connectionState ==
+                              ConnectionState.waiting,
+                          builder: (context) => Expanded(
+                            child: ListView.separated(
+                                itemBuilder: (_, index) => courseItemShimmer(),
+                                separatorBuilder: (_, index) => const SizedBox(
+                                      height: 8,
+                                    ),
+                                itemCount: 3),
+                          ),
+                          fallback: (context) {
+                            if (snapshot.hasError) {
+                              return Text('Error: ${snapshot.error}');
+                            } else if (!snapshot.hasData ||
+                                snapshot.data!.isEmpty) {
+                              return const Text('No courses found.');
                             } else {
-                              return SupabaseService().getUserCourses("");
-                            }
-                          }),
-                          builder: (context, snapshot) {
-                            return ConditionalBuilder(
-                              condition: state == MyCoursesRefreshState() && snapshot.connectionState != ConnectionState.waiting,
-                              builder: (context) =>
-                                  Expanded(
-                                      child: Column(children: [
-                                        const Spacer(),
-                                        CircularProgressIndicator(
-                                          color: defaultColor,
-                                        ),
-                                        const Spacer()
-                                      ])),
-                              fallback: (context) {
-                                if (snapshot.hasError) {
-                                  return Text('Error: ${snapshot.error}');
-                                } else if (!snapshot.hasData ||
-                                    snapshot.data!.isEmpty) {
-                                  return const Text('No courses found.');
-                                } else {
-                                  return Expanded(
-                                      child: ListView.separated(
-                                        itemCount: snapshot.data!.length,
-                                        physics: const BouncingScrollPhysics(
-                                          decelerationRate:
-                                          ScrollDecelerationRate.normal,
-                                        ),
-                                        itemBuilder: (context, index) {
-                                          final course = snapshot.data![index];
-                                          return OpenContainer(
-                                              openElevation: 0,
-                                              closedElevation: 0,
-                                              closedShape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                  BorderRadius.circular(16)),
-                                              transitionDuration:
-                                              const Duration(milliseconds: 450),
-                                              transitionType:
-                                              ContainerTransitionType
-                                                  .fadeThrough,
-                                              closedBuilder: (context, action) {
-                                                return courseItem(
-                                                  course: course,
-                                                  context: context,
-                                                );
-                                              },
-                                              openBuilder: (context, action) {
-                                                return CourseDetailsScreen(
-                                                    course: course);
-                                              });
-                                        },
-                                        separatorBuilder:
-                                            (BuildContext context, int index) =>
+                              return Expanded(
+                                  child: ListView.separated(
+                                itemCount: snapshot.data!.length,
+                                physics: const BouncingScrollPhysics(
+                                  decelerationRate:
+                                      ScrollDecelerationRate.normal,
+                                ),
+                                itemBuilder: (context, index) {
+                                  final course = snapshot.data![index];
+                                  return OpenContainer(
+                                      openElevation: 0,
+                                      closedElevation: 0,
+                                      closedShape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(16)),
+                                      transitionDuration:
+                                          const Duration(milliseconds: 450),
+                                      transitionType:
+                                          ContainerTransitionType.fadeThrough,
+                                      closedBuilder: (context, action) {
+                                        return courseItem(
+                                          course: course,
+                                          context: context,
+                                        );
+                                      },
+                                      openBuilder: (context, action) {
+                                        return CourseDetailsScreen(
+                                            course: course);
+                                      });
+                                },
+                                separatorBuilder:
+                                    (BuildContext context, int index) =>
                                         const SizedBox(
-                                          height: 8,
-                                        ),
-                                      ));
-                                }
-                              },
-                            );
-                          })
+                                  height: 8,
+                                ),
+                              ));
+                            }
+                          },
+                        );
+                      })
                     ],
                   ),
                 ),

@@ -12,7 +12,7 @@ import '../authentication-screens/login/login_screen.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   final PageController boardController = PageController();
-  bool isNext = true;
+  final bool isNext = true;
 
   OnBoardingScreen({super.key});
 

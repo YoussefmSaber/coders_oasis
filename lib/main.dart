@@ -79,7 +79,7 @@ class MyApp extends StatelessWidget {
             if (currentUserId != null) {
               return MaterialApp(
                 title: 'Coders\' Oasis',
-                home: AppLayout(),
+                home: const AppLayout(),
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(
                   useMaterial3: true,

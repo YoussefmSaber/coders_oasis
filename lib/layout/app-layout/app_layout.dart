@@ -6,9 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../shared/cubit/applayout-cubit/applayout_states.dart';
 
 class AppLayout extends StatelessWidget {
-  int selectedItemIndex = 0;
+  final int selectedItemIndex = 0;
 
-  AppLayout({super.key});
+  const AppLayout({super.key});
 
   @override
   Widget build(BuildContext context) {

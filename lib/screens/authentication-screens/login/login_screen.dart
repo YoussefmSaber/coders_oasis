@@ -161,7 +161,7 @@ class LoginScreen extends StatelessWidget {
     CacheHelper.saveData(key: "displayName", value: user?.displayName);
     CacheHelper.saveData(key: "userEmail", value: user?.email);
     CacheHelper.saveData(key: "userId", value: user?.id);
-    navigateAndFinish(context, AppLayout());
+    navigateAndFinish(context, const AppLayout());
   }
 
   Future loginNormal(context, String email, String password) async {
@@ -170,7 +170,7 @@ class LoginScreen extends StatelessWidget {
         await supabaseService.login(email: email, password: password);
 
     if (variable.user != null) {
-      navigateAndFinish(context, AppLayout());
+      navigateAndFinish(context, const AppLayout());
     }
   }
 }
