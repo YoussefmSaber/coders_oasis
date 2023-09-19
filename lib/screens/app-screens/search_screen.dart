@@ -73,6 +73,8 @@ class SearchScreen extends StatelessWidget {
                                     "assets/images/icons/search-icon.png"),
                           ),
                         ),
+                        onTapOutside: (event) =>
+                            FocusManager.instance.primaryFocus?.unfocus(),
                         onTap: () {
                           isClearOn = true;
                           cubit.changeToLoadingState();
