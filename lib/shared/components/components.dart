@@ -99,15 +99,16 @@ Widget iconButton(
         ),
         child: buttonImage);
 
-Widget backButton({
-  required Function onTap,
-}) =>
+Widget backButton(
+        {required Function onTap,
+        Color color = Colors.white,
+        Color arrowColor = Colors.black}) =>
     FloatingActionButton(
       onPressed: () {
         onTap();
       },
-      backgroundColor: Colors.transparent,
-      elevation: 0,
+      backgroundColor: color,
+      elevation: 5,
       highlightElevation: 0,
       splashColor: defaultColorTransparent,
       mini: true,
@@ -117,7 +118,7 @@ Widget backButton({
       ),
       child: Icon(
         Icons.arrow_back_ios_new_rounded,
-        color: darkFont,
+        color: arrowColor,
       ),
     );
 
@@ -578,8 +579,8 @@ Widget courseItem({required Course course, required context}) => Card(
     );
 
 Widget videoItem({required Video video, required context}) => InkWell(
-  onTap: () => navigateTo(context, VideoPlayer(videoUrl: video.videoUrl)),
-  child:   Card(
+      onTap: () => navigateTo(context, VideoPlayer(videoUrl: video.videoUrl)),
+      child: Card(
         color: Colors.white,
         surfaceTintColor: Colors.white,
         elevation: 0,
@@ -634,7 +635,7 @@ Widget videoItem({required Video video, required context}) => InkWell(
           ),
         ),
       ),
-);
+    );
 
 void navigateTo(context, widget) => Navigator.push(
     context,

@@ -53,18 +53,24 @@ class VideoPlayer extends StatelessWidget {
                   showVideoProgressIndicator: true,
                   progressColors: ProgressBarColors(playedColor: defaultColor),
                   onEnded: (_) {
-                    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-                    SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+                    SystemChrome.setEnabledSystemUIMode(
+                        SystemUiMode.edgeToEdge);
+                    SystemChrome.setPreferredOrientations(
+                        [DeviceOrientation.portraitUp]);
                     Navigator.pop(context);
                   },
                 ),
               ),
             ),
-            backButton(onTap: () {
-              SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-              SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-              Navigator.pop(context);
-            })
+            backButton(
+                color: Colors.transparent,
+                arrowColor: Colors.white,
+                onTap: () {
+                  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+                  SystemChrome.setPreferredOrientations(
+                      [DeviceOrientation.portraitUp]);
+                  Navigator.pop(context);
+                })
           ]),
         ),
       );

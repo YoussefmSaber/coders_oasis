@@ -65,31 +65,37 @@ class CoursesScreen extends StatelessWidget {
                 const SizedBox(
                   height: 16,
                 ),
-                TextField(
-                  cursorColor: defaultColor,
-                  decoration: InputDecoration(
-                    floatingLabelStyle: TextStyle(color: defaultColor),
-                    labelText: "Search course",
-                    labelStyle: TextStyle(color: gray),
-                    suffixIcon: const Image(
-                      image: AssetImage("assets/images/icons/search-icon.png"),
-                    ),
-                    border: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        width: 1.5,
-                        color: gray,
+                InkWell(
+                  overlayColor: MaterialStateProperty.all(Colors.transparent),
+                  onTap: () => navigateTo(context, SearchScreen()),
+                  child: Card(
+                    color: Colors.white,
+                    surfaceTintColor: Colors.white,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: BorderSide(
+                          width: 1.2,
+                          color: darkGray,
+                        )),
+                    child: Padding(
+                      padding: const EdgeInsets.all(18.0),
+                      child: Row(
+                        children: [
+                          Text(
+                            "Search course",
+                            style: GoogleFonts.rubik(
+                                textStyle: TextStyle(
+                                    color: gray,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400)),
+                          ),
+                          const Spacer(),
+                          Image.asset("assets/images/icons/search-icon.png")
+                        ],
                       ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        width: 1.5,
-                        color: defaultColor,
-                      ),
-                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  onTap: () => navigateTo(context, const SearchScreen()),
                 ),
                 const SizedBox(
                   height: 16,
