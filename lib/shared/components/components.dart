@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:coders_oasis/screens/app-screens/video-player-screen/video_player.dart';
 import 'package:coders_oasis/shared/components/constants.dart';
 import 'package:curved_progress_bar/curved_progress_bar.dart';
@@ -150,6 +152,7 @@ Widget defaultTextField(
       controller: controller,
       obscureText: isPassword,
       cursorColor: defaultColor,
+      onTapOutside: (event) => FocusManager.instance.primaryFocus?.unfocus(),
       decoration: InputDecoration(
         floatingLabelStyle: TextStyle(color: defaultColor),
         focusColor: defaultColor,
