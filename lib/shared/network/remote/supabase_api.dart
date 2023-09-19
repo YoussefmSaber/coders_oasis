@@ -73,6 +73,17 @@ class SupabaseService {
     return courses;
   }
 
+  Future<List<Course>> courseSearch(String query) async {
+    final response = await supabase.from('courses').select('*').textSearch(
+          'name',
+          query,
+        );
+    final courseList = (response as List<dynamic>)
+        .map((json) => Course.fromJson(json))
+        .toList();
+    return courseList;
+  }
+
   Future<List<Video>> getCourseVideos({required String courseId}) async {
     final response = await supabase
         .from('videos')

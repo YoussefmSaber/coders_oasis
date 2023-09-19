@@ -1,3 +1,4 @@
+import 'package:coders_oasis/screens/app-screens/search_screen.dart';
 import 'package:coders_oasis/screens/authentication-screens/login/login_screen.dart';
 import 'package:coders_oasis/screens/onboarding/onboarding.dart';
 import 'package:coders_oasis/shared/bloc_observer.dart';
@@ -79,7 +80,7 @@ class MyApp extends StatelessWidget {
             if (currentUserId != null) {
               return MaterialApp(
                 title: 'Coders\' Oasis',
-                home: const AppLayout(),
+                home: SearchScreen(),
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(
                   useMaterial3: true,
