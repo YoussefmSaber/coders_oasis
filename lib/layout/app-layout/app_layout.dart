@@ -8,6 +8,8 @@ import '../../shared/cubit/applayout-cubit/applayout_states.dart';
 class AppLayout extends StatelessWidget {
   int selectedItemIndex = 0;
 
+  AppLayout({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AppLayoutCubit, AppLayoutStates>(
@@ -24,9 +26,7 @@ class AppLayout extends StatelessWidget {
             selectedItemColor: defaultColor,
             onTap: (index) => cubit.changeIndex(index),
           ),
-          body: SafeArea(
-            child:cubit.appScreens[cubit.currentIndex]
-            ),
+          body: SafeArea(child: cubit.appScreens[cubit.currentIndex]),
         );
       },
     );

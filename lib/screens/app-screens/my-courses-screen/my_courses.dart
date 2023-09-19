@@ -77,7 +77,7 @@ class MyCoursesScreen extends StatelessWidget {
                                   return Text('Error: ${snapshot.error}');
                                 } else if (!snapshot.hasData ||
                                     snapshot.data!.isEmpty) {
-                                  return Text('No courses found.');
+                                  return const Text('No courses found.');
                                 } else {
                                   return Expanded(
                                       child: ListView.separated(

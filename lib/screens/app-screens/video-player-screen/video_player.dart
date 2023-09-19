@@ -7,7 +7,7 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart'; // Import S
 class VideoPlayer extends StatelessWidget {
   final String videoUrl;
 
-  VideoPlayer({Key? key, required this.videoUrl}) : super(key: key);
+  const VideoPlayer({Key? key, required this.videoUrl}) : super(key: key);
 
   String? extractVideoIdFromUrl(String url) {
     final uri = Uri.parse(url);
@@ -25,9 +25,9 @@ class VideoPlayer extends StatelessWidget {
     String? asd = extractVideoIdFromUrl(videoUrl);
 
     if (asd != null) {
-      YoutubePlayerController _controller = YoutubePlayerController(
+      YoutubePlayerController controller = YoutubePlayerController(
         initialVideoId: asd,
-        flags: YoutubePlayerFlags(
+        flags: const YoutubePlayerFlags(
           autoPlay: true,
           mute: false,
         ),
@@ -49,7 +49,7 @@ class VideoPlayer extends StatelessWidget {
               child: AspectRatio(
                 aspectRatio: 16 / 9,
                 child: YoutubePlayer(
-                  controller: _controller,
+                  controller: controller,
                   showVideoProgressIndicator: true,
                   progressColors: ProgressBarColors(playedColor: defaultColor),
                   onEnded: (_) {
@@ -70,7 +70,7 @@ class VideoPlayer extends StatelessWidget {
       );
     } else {
       // Handle the case where the URL does not contain a valid video ID
-      return SafeArea(
+      return const SafeArea(
         child: Scaffold(
           body: Center(
             child: Text("Invalid YouTube URL"),

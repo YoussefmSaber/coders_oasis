@@ -10,7 +10,7 @@ class VerifyEmailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(seconds: 10), (){
+    Future.delayed(const Duration(seconds: 10), (){
       navigateAndFinish(context, LoginScreen());
     });
     

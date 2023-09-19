@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:coders_oasis/models/user_model.dart';
 import 'package:coders_oasis/shared/cubit/profile-cubit/profile_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

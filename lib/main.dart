@@ -1,8 +1,6 @@
-import 'package:coders_oasis/screens/app-screens/course-videos-screen/course_videos.dart';
 import 'package:coders_oasis/screens/authentication-screens/login/login_screen.dart';
 import 'package:coders_oasis/screens/onboarding/onboarding.dart';
 import 'package:coders_oasis/shared/bloc_observer.dart';
-import 'package:coders_oasis/shared/components/shimmer_components.dart';
 import 'package:coders_oasis/shared/cubit/applayout-cubit/applayout_cubit.dart';
 import 'package:coders_oasis/shared/cubit/course-details-cubit/course_details_cubit.dart';
 import 'package:coders_oasis/shared/cubit/courses-screen-cubit/courses_cubit.dart';
@@ -43,7 +41,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
+      const SystemUiOverlayStyle(
         statusBarColor: Colors.black, // Change this color to the desired one
       ),
     );
@@ -65,7 +63,7 @@ class MyApp extends StatelessWidget {
           } else if (snapshot.hasError) {
             // Handle error if necessary
             return MaterialApp(
-              title: 'Coders\' Oasis' ,
+              title: 'Coders\' Oasis',
               home: const Scaffold(
                 body: SafeArea(child: Text('An error occurred')),
               ),

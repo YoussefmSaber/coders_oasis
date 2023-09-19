@@ -14,7 +14,7 @@ import '../../../shared/components/constants.dart';
 class CourseDetailsScreen extends StatelessWidget {
   final Course course;
 
-  CourseDetailsScreen({super.key, required this.course});
+  const CourseDetailsScreen({super.key, required this.course});
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +143,7 @@ class CourseDetailsScreen extends StatelessWidget {
                                       AsyncSnapshot<bool> snapshot) {
                                     if (snapshot.connectionState ==
                                         ConnectionState.waiting) {
-                                      return CircularProgressIndicator();
+                                      return const CircularProgressIndicator();
                                     } else if (snapshot.hasError) {
                                       // Handle errors here.
                                       return Text('Error: ${snapshot.error}');
@@ -153,7 +153,10 @@ class CourseDetailsScreen extends StatelessWidget {
                                         return defaultButton(
                                             text: "Continue to the course",
                                             onTap: () {
-                                              navigateTo(context, CourseVideosScreen(course: course));
+                                              navigateTo(
+                                                  context,
+                                                  CourseVideosScreen(
+                                                      course: course));
                                             },
                                             textColor: "ffffff",
                                             buttonWidth: double.infinity);
@@ -161,7 +164,6 @@ class CourseDetailsScreen extends StatelessWidget {
                                         return defaultButton(
                                             text: "Add to your library",
                                             onTap: () {
-                                              print(userId);
                                               supabaseService.addCourseToUser(
                                                   userId, course.id);
                                               navigateTo(context,
@@ -171,7 +173,7 @@ class CourseDetailsScreen extends StatelessWidget {
                                             textColor: "ffffff",
                                             buttonWidth: double.infinity);
                                       } else {
-                                        return Text("Error happend");
+                                        return const Text("Error happend");
                                       }
                                     }
                                   }),

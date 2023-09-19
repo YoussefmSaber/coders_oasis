@@ -1,4 +1,3 @@
-import 'package:coders_oasis/screens/app-screens/course-details-screen/course_details_screen.dart';
 import 'package:coders_oasis/screens/app-screens/video-player-screen/video_player.dart';
 import 'package:coders_oasis/shared/components/constants.dart';
 import 'package:curved_progress_bar/curved_progress_bar.dart';
@@ -136,7 +135,7 @@ Widget notificationButton({required Function onTap}) => FloatingActionButton(
         borderRadius: BorderRadius.circular(100),
       ),
       child: ImageIcon(
-        AssetImage("assets/images/icons/notification-icon.png"),
+        const AssetImage("assets/images/icons/notification-icon.png"),
         color: darkFont,
       ),
     );
@@ -597,7 +596,7 @@ Widget videoItem({required Video video, required context}) => InkWell(
                     video.thumbnailPath,
                     width: 120,
                   )),
-              SizedBox(
+              const SizedBox(
                 width: 16,
               ),
               Expanded(

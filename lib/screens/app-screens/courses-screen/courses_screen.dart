@@ -3,7 +3,6 @@ import 'package:coders_oasis/shared/components/components.dart';
 import 'package:coders_oasis/shared/components/constants.dart';
 import 'package:coders_oasis/shared/cubit/courses-screen-cubit/courses_cubit.dart';
 import 'package:coders_oasis/shared/cubit/courses-screen-cubit/courses_states.dart';
-import 'package:coders_oasis/shared/network/local/cahce_helper.dart';
 import 'package:coders_oasis/shared/network/remote/supabase_api.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +12,8 @@ import '../../../models/course_model.dart';
 import '../course-details-screen/course_details_screen.dart';
 
 class CoursesScreen extends StatelessWidget {
+  const CoursesScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CoursesScreenCubit, CoursesScreenStates>(
@@ -68,7 +69,7 @@ class CoursesScreen extends StatelessWidget {
                     floatingLabelStyle: TextStyle(color: defaultColor),
                     labelText: "Search course",
                     labelStyle: TextStyle(color: gray),
-                    suffixIcon: Image(
+                    suffixIcon: const Image(
                       image: AssetImage("assets/images/icons/search-icon.png"),
                     ),
                     border: OutlineInputBorder(
@@ -118,7 +119,7 @@ class CoursesScreen extends StatelessWidget {
                               return Text('Error: ${snapshot.error}');
                             } else if (!snapshot.hasData ||
                                 snapshot.data!.isEmpty) {
-                              return Text('No courses found.');
+                              return const Text('No courses found.');
                             } else {
                               return ListView.separated(
                                 itemCount: snapshot.data!.length,
@@ -152,7 +153,7 @@ class CoursesScreen extends StatelessWidget {
                                 },
                                 separatorBuilder:
                                     (BuildContext context, int index) =>
-                                        SizedBox(height: 8),
+                                        const SizedBox(height: 8),
                               );
                             }
                           },

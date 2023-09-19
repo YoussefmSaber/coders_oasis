@@ -1,11 +1,8 @@
 import 'package:coders_oasis/shared/network/local/cahce_helper.dart';
-import 'package:coders_oasis/shared/network/remote/google-signin.dart';
 import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 import 'package:coders_oasis/models/course_model.dart';
 
 import '../../../models/video_model.dart';
-
-import 'package:supabase/supabase.dart';
 
 class SupabaseService {
   static final SupabaseService _singleton = SupabaseService._internal();
@@ -35,7 +32,7 @@ class SupabaseService {
   }
 
   Future<String?> currentUserId() async {
-    return await supabase.auth.currentUser?.id;
+    return supabase.auth.currentUser?.id;
   }
 
   Future<void> signout() async {
@@ -44,7 +41,7 @@ class SupabaseService {
   }
 
   Future<String?> currentUserEmail() async {
-    return await supabase.auth.currentUser?.email;
+    return supabase.auth.currentUser?.email;
   }
 
   Future<List<Course>> getAllCourses() async {
@@ -68,10 +65,8 @@ class SupabaseService {
     List<Course> courses = [];
 
     for (var courseId in coursesId) {
-      final courseResponse = await supabase
-          .from("courses")
-          .select("*")
-          .eq("id", courseId);
+      final courseResponse =
+          await supabase.from("courses").select("*").eq("id", courseId);
       final courseList = (courseResponse as List<dynamic>);
       if (courseList.isNotEmpty) {
         final course = Course.fromJson(courseList.first);
@@ -84,8 +79,11 @@ class SupabaseService {
   }
 
   Future<List<Video>> getCourseVideos({required String courseId}) async {
-    final response =
-        await supabase.from('videos').select('*').eq('course_id', courseId).order('video_num', ascending: true);
+    final response = await supabase
+        .from('videos')
+        .select('*')
+        .eq('course_id', courseId)
+        .order('video_num', ascending: true);
 
     final videos = (response as List<dynamic>)
         .map((json) => Video.fromJson(json))
@@ -103,8 +101,6 @@ class SupabaseService {
       data: {'username': username},
     );
 
-    final Session? session = res.session;
-    final User? user = res.user;
     return res;
   }
 
@@ -125,12 +121,9 @@ class SupabaseService {
   }
 
   void addCourseToUser(String userId, String courseId) async {
-    print("$userId, $courseId");
-
-    var asd = await supabase
+    await supabase
         .from("enrolled_courses")
         .insert({'user_id': userId, 'course_id': courseId});
-    print("added the course to the user");
   }
 
   Future<bool> isCourseEnrolled(String userId, String courseId) async {
@@ -141,7 +134,7 @@ class SupabaseService {
           .eq('user_id', userId)
           .eq('course_id', courseId);
 
-      if (response.runtimeType == null || response.isEmpty) {
+      if (response.isEmpty) {
         return false;
       } else {
         return true;

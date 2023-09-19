@@ -8,7 +8,6 @@ import 'package:coders_oasis/shared/cubit/profile-cubit/profile_cubit.dart';
 import 'package:coders_oasis/shared/cubit/profile-cubit/profile_states.dart';
 import 'package:coders_oasis/shared/network/local/cahce_helper.dart';
 import 'package:coders_oasis/shared/network/remote/supabase_api.dart';
-import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,16 +15,13 @@ import 'package:google_fonts/google_fonts.dart';
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});
 
-  var supabaseService = SupabaseService();
+  final supabaseService = SupabaseService();
 
   @override
   Widget build(BuildContext context) {
     var cubit = ProfileCubit.get(context);
     return BlocConsumer<ProfileCubit, ProfileScreenState>(
-      listener: (context, state) async {
-        var name = await cubit.name;
-        print(name);
-      },
+      listener: (context, state) async {},
       builder: (context, state) {
         return Scaffold(
           backgroundColor: Colors.white,
@@ -65,7 +61,7 @@ class ProfileScreen extends StatelessWidget {
                   child: profileItem(
                       label: "Your Courses",
                       onTap: () {
-                        navigateTo(context, MyCoursesScreen());
+                        navigateTo(context, const MyCoursesScreen());
                       }),
                 ),
                 const SizedBox(

@@ -2,7 +2,6 @@ import 'package:coders_oasis/models/video_model.dart';
 import 'package:coders_oasis/shared/components/components.dart';
 import 'package:coders_oasis/shared/components/constants.dart';
 import 'package:coders_oasis/shared/network/remote/supabase_api.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../models/course_model.dart';
 
 class CourseVideosScreen extends StatelessWidget {
-  CourseVideosScreen({super.key, required this.course});
+  const CourseVideosScreen({super.key, required this.course});
 
   final Course course;
 
@@ -78,7 +77,7 @@ class CourseVideosScreen extends StatelessWidget {
                                   width: double.infinity,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                               Padding(
@@ -97,7 +96,7 @@ class CourseVideosScreen extends StatelessWidget {
                                   textAlign: TextAlign.start,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 8,
                               ),
                               Padding(
@@ -116,7 +115,7 @@ class CourseVideosScreen extends StatelessWidget {
                                   textAlign: TextAlign.start,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 16,
                               ),
                             ],

@@ -13,8 +13,8 @@ import '../signup/signup_screen.dart';
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
 
-  var emailController = TextEditingController();
-  var passwordController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -123,9 +123,7 @@ class LoginScreen extends StatelessWidget {
                   child: defaultButton(
                       text: "Log in",
                       onTap: () {
-                        loginNormal(
-                            context,
-                            emailController.text,
+                        loginNormal(context, emailController.text,
                             passwordController.text);
                       },
                       textColor: "ffffff",
@@ -164,14 +162,12 @@ class LoginScreen extends StatelessWidget {
     CacheHelper.saveData(key: "userEmail", value: user?.email);
     CacheHelper.saveData(key: "userId", value: user?.id);
     navigateAndFinish(context, AppLayout());
-    print(user.toString());
   }
 
   Future loginNormal(context, String email, String password) async {
     var supabaseService = SupabaseService();
     var variable =
         await supabaseService.login(email: email, password: password);
-    print("'Login page:--' \n ${variable.user?.email}");
 
     if (variable.user != null) {
       navigateAndFinish(context, AppLayout());

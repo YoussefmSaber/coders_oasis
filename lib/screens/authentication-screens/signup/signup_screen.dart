@@ -3,7 +3,6 @@ import 'package:coders_oasis/shared/network/remote/supabase_api.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 
 import '../../../shared/components/components.dart';
 import '../../../shared/components/constants.dart';
@@ -103,8 +102,8 @@ class SignupScreen extends StatelessWidget {
                                   backgroundColor: errorColor,
                                   textColor: Colors.white);
                             } else {
-                              navigateTo(context, VerifyEmailScreen());
-                              print("'signup screen:--' \n\n ${variable.user}");
+                              // ignore: use_build_context_synchronously
+                              navigateTo(context, const VerifyEmailScreen());
                             }
                           } catch (error) {
                             print("Error: $error");
@@ -121,6 +120,7 @@ class SignupScreen extends StatelessWidget {
                           if (state.contains(MaterialState.pressed)) {
                             return secondaryColorTransparent;
                           }
+                          return null;
                         })),
                     onPressed: () {
                       navigateAndFinish(context, LoginScreen());

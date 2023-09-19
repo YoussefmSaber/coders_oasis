@@ -29,9 +29,5 @@ class GoogleSignInApi {
     return account;
   }
 
-  static void test() {
-    print(_googleSignIn.currentUser?.email);
-  }
-
   static Future<GoogleSignInAccount?> signOut() => _googleSignIn.signOut();
 }

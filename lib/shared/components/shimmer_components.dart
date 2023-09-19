@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
             side: BorderSide(width: 1, color: gray),
             borderRadius: BorderRadius.circular(8)),
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
               const FadeShimmer(
@@ -28,7 +28,7 @@ import 'package:flutter/material.dart';
                 child: Column(
                   children: [
                     mediumTextShimmer(),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     progressBarShimmer()
                   ],
                 ),

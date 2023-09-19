@@ -1,5 +1,4 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:supabase_auth_ui/supabase_auth_ui.dart';
 
 class CacheHelper {
   static late SharedPreferences sharedPreferences;

@@ -73,6 +73,7 @@ class VerifyCodeScreen extends StatelessWidget {
                           if (state.contains(MaterialState.pressed)) {
                             return secondaryColorTransparent;
                           }
+                          return null;
                         })),
                     child: Text(
                       "Send Code",

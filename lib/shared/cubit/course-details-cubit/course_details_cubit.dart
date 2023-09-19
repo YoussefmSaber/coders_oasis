@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:coders_oasis/shared/cubit/course-details-cubit/course_details_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
