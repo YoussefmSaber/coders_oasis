@@ -8,6 +8,7 @@ import 'package:coders_oasis/shared/cubit/courses-screen-cubit/courses_cubit.dar
 import 'package:coders_oasis/shared/cubit/my-courses-cubit/my_courses_cubit.dart';
 import 'package:coders_oasis/shared/cubit/onboarding_cubit/onboarding_cubit.dart';
 import 'package:coders_oasis/shared/cubit/profile-cubit/profile_cubit.dart';
+import 'package:coders_oasis/shared/cubit/search-cubit/search_cubit.dart';
 import 'package:coders_oasis/shared/cubit/settings-cubit/settings_cubit.dart';
 import 'package:coders_oasis/shared/network/local/cahce_helper.dart';
 import 'package:coders_oasis/shared/network/remote/api-keys.dart';
@@ -54,7 +55,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => CoursesScreenCubit()),
         BlocProvider(create: (context) => ProfileCubit()),
         BlocProvider(create: (context) => CourseDetailsCubit()),
-        BlocProvider(create: (context) => MyCoursesCubit())
+        BlocProvider(create: (context) => MyCoursesCubit()),
+        BlocProvider(create: (context) => SearchCubit())
       ],
       child: FutureBuilder<String?>(
         future: SupabaseService().currentUserId(),
@@ -80,7 +82,7 @@ class MyApp extends StatelessWidget {
             if (currentUserId != null) {
               return MaterialApp(
                 title: 'Coders\' Oasis',
-                home: SearchScreen(),
+                home: AppLayout(),
                 debugShowCheckedModeBanner: false,
                 theme: ThemeData(
                   useMaterial3: true,
