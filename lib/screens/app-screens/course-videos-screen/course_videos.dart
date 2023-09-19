@@ -121,6 +121,9 @@ class CourseVideosScreen extends StatelessWidget {
                             ],
                           ),
                         ),
+                        SizedBox(
+                          height: 8,
+                        ),
                         Expanded(
                           child: ListView.separated(
                               itemBuilder: (_, index) => videoItem(
