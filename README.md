@@ -64,4 +64,4 @@ If you want to access the Api key for the Supabase Tables just message me on [Li
 
 ---
 
-**Coders' Oasis** is created with ❤️ by [Your Name](https://github.com/your-username).
+**Coders' Oasis** is created with ❤️ by [Youssef Mohamed](https://github.com/YoussefmSaber/).
