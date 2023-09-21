@@ -53,7 +53,7 @@ The following Flutter packages were used to build Coders' Oasis:
 
 To get started with Coders' Oasis, follow these steps:
 
-1. Clone this repository: `git clone https://github.com/your-username/coders-oasis.git`
+1. Clone this repository: `git clone https://github.com/YoussefmSaber/coders_oasis.git`
 2. Install dependencies: `flutter pub get`
 3. Run the app: `flutter run`
 
